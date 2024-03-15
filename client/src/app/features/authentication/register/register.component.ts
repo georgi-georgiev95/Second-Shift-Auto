@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { matchPasswordValidator } from 'src/app/shared/validators/password-match.validator';
+import { UserApiService } from '../user-api.service';
+import { UserReg } from 'src/app/types/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,11 +23,18 @@ export class RegisterComponent {
     })
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userApiService: UserApiService, private router: Router) { }
   
   registerUser(): void {
-    if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+    if (!this.registerForm.valid) {
+      return;
     }
+
+    const formData = this.registerForm.value;
+
+    this.userApiService.register(formData as UserReg).subscribe((data) => {
+      console.log(data);
+      this.router.navigate(['/home']);
+    })
   }
 }
