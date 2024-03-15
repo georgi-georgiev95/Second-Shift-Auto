@@ -16,5 +16,11 @@ export class RegisterComponent {
     })
   });
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder) { }
+  
+  registerUser(): void {
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+    }
+  }
 }
