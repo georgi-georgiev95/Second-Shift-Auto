@@ -1,0 +1,66 @@
+.container {
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+
+p {
+    font-size: 15px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.fa {
+    font-size: 35px;
+}
+
+form {
+    background-color: white;
+    -webkit-box-shadow: 0 0 8px gray;
+    filter: drop-shadow(gray 0 0 3px);
+    width: fit-content;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5px;
+    width: 300px;
+    height: 50px;
+}
+
+input{
+    width: 80%;
+    height: 30px;
+}
+
+button {
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 0px;
+    padding: 0 30px;
+    height: 30px;
+}
+
+button:hover {
+    background-color: darkgray;
+}
+
+.error {
+    color: red;
+    margin-top: 0;
+}
+
