@@ -7,11 +7,11 @@ import { BehaviorSubject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class UserApiService {
-  private user$$ = new BehaviorSubject<AuthRes>({} as AuthRes); 
+  private user$$ = new BehaviorSubject<AuthRes | undefined>(undefined); 
   user$ = this.user$$.asObservable();
 
   constructor(private http: HttpClient) {
-      
+
    }
 
   login(formData: UserLogin) {
@@ -24,5 +24,11 @@ export class UserApiService {
     return this.http
       .post<AuthRes>('/users/register', formData)
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  logout() {
+    return this.http
+      .post<AuthRes>('/users/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
   }
 }
