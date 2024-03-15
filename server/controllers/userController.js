@@ -7,7 +7,8 @@ router.post('/login', async (req, res) => {
 
     try {
         const { email, authToken, userId, username } = await userService.login(userData);
-        res.send({ email, authToken, userId, username });
+        res.cookie('auth-cookie', authToken, { httpOnly: true, secure: true });
+        res.status(200).send({ email, userId, username });
     } catch {
         res.send({ error: 'Wrong email or password!' });
     }
@@ -25,7 +26,8 @@ router.post('/register', async (req, res) => {
 
     try {
         const { email, authToken, userId, username } = await userService.register(user);
-        res.send({ email, authToken, userId, username });
+        res.cookie('auth-cookie', authToken, { httpOnly: true, secure: true });
+        res.status(200).send({ email, userId, username });
     } catch {
         res.send({ error: 'Email already exists!' });
     }
