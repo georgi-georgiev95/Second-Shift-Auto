@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+}
+
+img {
+    width: 1200px;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+span {
+    font-size: 90px;
+    color: rgb(234,116,2);
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    cursor: pointer;
+    font-style: italic;
+}
