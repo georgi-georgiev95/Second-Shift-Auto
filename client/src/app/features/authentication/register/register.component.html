@@ -1,1 +1,107 @@
-<p>register works!</p>
+<div class="container">
+  <div class="content">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <h1>Register</h1>
+      <div class="row">
+        <i class="fa fa-user icon"></i>
+        <input
+          type="username"
+          id="username"
+          placeholder="Username"
+          formControlName="username"
+          autocomplete="username"
+        />
+      </div>
+
+      <ng-container *ngIf="registerForm.get('username')?.touched">
+        <p class="error" *ngIf="registerForm.get('username')?.errors?.['required']">
+          Username is required!
+        </p>
+        <p class="error" *ngIf="registerForm.get('username')?.errors?.['minlength']">
+          Username's length should not be less than
+          {{registerForm.get('username')?.errors?.['minlength'].requiredLength}}
+          characters!
+        </p>
+      </ng-container>
+
+      <div class="row">
+        <i class="fa fa-envelope icon"></i>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+          autocomplete="email"
+        />
+      </div>
+
+      <ng-container *ngIf="registerForm.get('email')?.touched">
+        <p class="error" *ngIf="registerForm.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="registerForm.get('email')?.errors?.['email']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <ng-container formGroupName="passGroup">
+        <div class="row">
+          <i class="fa fa-key icon"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+
+        <ng-container *ngIf="registerForm.get('passGroup')?.get('password')?.touched">
+          <p
+            class="error"
+            *ngIf="registerForm.get('passGroup')?.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="registerForm.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least
+            {{registerForm.get('passGroup')?.get('password')?.errors?.['minlength'].requiredLength}}
+            characters!
+          </p>
+        </ng-container>
+
+        <div class="row">
+          <i class="fa fa-key icon"></i>
+          <input
+            type="password"
+            id="re-password"
+            placeholder="Repeat Password"
+            formControlName="rePassword"
+          />
+        </div>
+
+        <ng-container *ngIf="registerForm.get('passGroup')?.get('rePassword')?.touched">
+          <p
+            class="error"
+            *ngIf="
+          registerForm.get('passGroup')?.errors?.['matchPasswordsValidator']"
+          >
+            Repeat Password does not match password!
+          </p>
+        </ng-container>
+      </ng-container>
+
+      <div class="row">
+        <p routerLink="/users/login">
+          Already have an account? Login here &rarr;
+        </p>
+      </div>
+
+      <button
+      [disabled]="registerForm.invalid"
+      >Login</button>
+    </form>
+  </div>
+</div>
