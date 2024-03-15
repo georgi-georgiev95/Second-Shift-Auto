@@ -1,0 +1,13 @@
+.container {
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+p {
+    font-size: 50px;
+}
