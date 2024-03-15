@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NotFoundComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ]
 })
 export class FeaturesModule { }
