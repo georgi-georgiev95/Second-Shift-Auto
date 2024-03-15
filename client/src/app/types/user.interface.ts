@@ -17,5 +17,6 @@ export interface UserLogin {
 export interface AuthRes {
     email: string,
     userId: string,
-    username: string
+    username: string,
+    error?: string
 }
