@@ -13,3 +13,9 @@ export interface UserLogin {
     password: string,
     error?: string
 }
+
+export interface AuthRes {
+    email: string,
+    userId: string,
+    username: string
+}
