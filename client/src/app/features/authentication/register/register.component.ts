@@ -33,7 +33,9 @@ export class RegisterComponent {
     const formData = this.registerForm.value;
 
     this.userApiService.register(formData as UserReg).subscribe((data) => {
-      console.log(data);
+      if(data?.error) {
+        return;
+      }
       this.router.navigate(['/home']);
     })
   }

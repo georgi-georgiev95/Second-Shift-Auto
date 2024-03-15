@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, catchError, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 
 const { apiUrl } = environment;
@@ -15,7 +15,6 @@ export class AppInterceptor implements HttpInterceptor {
                 withCredentials: true
             })
         }
-
 
         return next.handle(req);
     }

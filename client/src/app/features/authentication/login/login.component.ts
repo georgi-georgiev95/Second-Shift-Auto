@@ -24,6 +24,9 @@ export class LoginComponent {
     
     const formData = this.loginForm.value;
     this.userApiService.login(formData as UserLogin).subscribe((data) => {
+      if(data?.error) {
+        return;
+      }
       this.router.navigate(['/home']);
     });
   }

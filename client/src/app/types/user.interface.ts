@@ -4,7 +4,8 @@ export interface UserReg {
     passGroup: {
         password: string,
         rePassword: string
-    }
+    },
+    error?: string
 }
 
 export interface UserLogin {
