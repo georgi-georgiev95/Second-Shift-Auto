@@ -1,4 +1,4 @@
-# SecondShiftAuto
+# Second Shift Auto
 Welcome to SecondShiftAuto, your go-to platform for buying and selling second-hand vehicles with ease.
 
 ## Introduction
