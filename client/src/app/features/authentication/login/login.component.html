@@ -42,10 +42,10 @@
           </p>
           <p
             class="error"
-            *ngIf="loginForm.get('passGroup')?.get('password')?.errors?.['minlength']"
+            *ngIf="loginForm.get('password')?.errors?.['minlength']"
           >
             Password must be at least
-            {{loginForm.get('passGroup')?.get('password')?.errors?.['minlength'].requiredLength}}
+            {{loginForm.get('password')?.errors?.['minlength'].requiredLength}}
             characters!
           </p>
         </ng-container>
