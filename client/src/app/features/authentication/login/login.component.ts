@@ -18,12 +18,12 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private userApiService: UserApiService, private router: Router) {}
 
   loginUser(): void {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+    if (!this.loginForm.valid) {
+      return;
     }
     
     const formData = this.loginForm.value;
-    this.userApiService.login(formData as UserLogin).subscribe(() => {
+    this.userApiService.login(formData as UserLogin).subscribe((data) => {
       this.router.navigate(['/home']);
     });
   }
