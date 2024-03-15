@@ -6,7 +6,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserApiService {
+export class AuthenticationService {
   private user$$ = new BehaviorSubject<AuthRes | undefined>(undefined); 
   user$ = this.user$$.asObservable();
 

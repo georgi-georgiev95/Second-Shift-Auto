@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UserApiService } from '../user-api.service';
+import { AuthenticationService } from '../authentication.service';
 import { UserLogin } from 'src/app/types/user.interface';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  constructor(private fb: FormBuilder, private userApiService: UserApiService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {}
 
   loginUser(): void {
     if (!this.loginForm.valid) {
@@ -23,13 +23,15 @@ export class LoginComponent {
     }
     
     const formData = this.loginForm.value;
-    this.userApiService.login(formData as UserLogin).subscribe((data) => {
-      if (data?.error) {
-        window.alert(data.error);
-        this.loginForm.reset();
-        return;
-      }
-      this.router.navigate(['/home']);
-    });
+    this.authenticationService
+      .login(formData as UserLogin)
+      .subscribe((data) => {
+        if (data?.error) {
+          window.alert(data.error);
+          this.loginForm.reset();
+          return;
+        }
+        this.router.navigate(['/home']);
+      });
   }
 }

@@ -4,7 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { UserApiService } from './user-api.service';
+import { AuthenticationService } from './authentication.service';
 
 
 
@@ -19,7 +19,7 @@ import { UserApiService } from './user-api.service';
     ReactiveFormsModule
   ],
   providers: [
-    UserApiService
+    AuthenticationService
   ]
 })
 export class AuthenticationModule { }
