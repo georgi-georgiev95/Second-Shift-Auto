@@ -12,5 +12,11 @@ export class LoginComponent {
     password: ''
   })
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder) { }
+  
+  loginUser(): void {
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+    }
+  }
 }

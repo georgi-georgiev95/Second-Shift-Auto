@@ -1,1 +1,62 @@
-<p>login works!</p>
+<div class="container">
+  <div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <h1>Login</h1>
+
+      <div class="row">
+        <i class="fa fa-envelope icon"></i>
+        <input  
+          type="email"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+          autocomplete="email"
+        />
+      </div>
+
+      <ng-container *ngIf="loginForm.get('email')?.touched">
+        <p class="error" *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="loginForm.get('email')?.errors?.['email']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+        <div class="row">
+          <i class="fa fa-key icon"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+
+        <ng-container *ngIf="loginForm.get('password')?.touched">
+          <p
+            class="error"
+            *ngIf="loginForm.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="loginForm.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least
+            {{loginForm.get('passGroup')?.get('password')?.errors?.['minlength'].requiredLength}}
+            characters!
+          </p>
+        </ng-container>
+
+      <div class="row">
+        <p routerLink="/users/register">Create your account 	&rarr;</p>
+      </div>
+
+      <button
+      [disabled]="loginForm.invalid"
+      >Login</button>
+    </form>
+  </div>
+</div>
