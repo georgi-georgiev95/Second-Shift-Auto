@@ -34,7 +34,12 @@ router.post('/register', async (req, res) => {
 });	
 
 router.post('/logout', (req, res) => {
-    res.json({ok: true});
+    try {
+        res.clearCookie('auth-cookie');
+        res.status(200).send({ message: 'Logout successful' });
+    } catch (err) {
+        res.status(500).send({ error: 'Logout failed' });
+    }
 })
 
 module.exports = router;
