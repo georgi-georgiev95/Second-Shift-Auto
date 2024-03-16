@@ -14,13 +14,17 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: '**',
-    redirectTo: '/404'
+    path: 'users',
+    loadChildren: () => import('./features/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
     path: '404',
     component: NotFoundComponent
-  }
+  },
+//   {
+//     path: '**',
+//     redirectTo: '/404'
+//   }
 ];
 
 @NgModule({

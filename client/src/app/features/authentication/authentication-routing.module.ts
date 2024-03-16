@@ -4,9 +4,6 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {
-    path: 'users',
-    children: [
       {
         path: 'register',
         component: RegisterComponent,
@@ -15,8 +12,6 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent
       }
-    ],
-  },
 ];
 
 @NgModule({

@@ -4,7 +4,6 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationService } from './authentication.service';
 
 
 
@@ -17,9 +16,6 @@ import { AuthenticationService } from './authentication.service';
     CommonModule,
     AuthenticationRoutingModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    AuthenticationService
   ]
 })
 export class AuthenticationModule { }
