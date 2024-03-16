@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { FeaturesModule } from './features/features.module';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticationService } from './features/authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { appInterceptorProvider } from './app.interceptor';
     FeaturesModule,
     AppRoutingModule,
   ],
-  providers: [appInterceptorProvider],
+  providers: [appInterceptorProvider, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
