@@ -21,13 +21,29 @@ export class AuthenticationService {
   login(formData: UserLogin) {
     return this.http
       .post<AuthRes>('/users/login', formData)
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(tap((user) => {
+        if (user?.error) {
+          window.alert(user.error);
+          this.user$$.next(undefined);
+          return;
+        }
+
+        this.user$$.next(user);
+      }));
   }
 
   register(formData: UserReg) {
     return this.http
       .post<AuthRes>('/users/register', formData)
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(tap((user) => {
+        if (user?.error) {
+          window.alert(user.error);
+          this.user$$.next(undefined);
+          return;
+        }
+
+        this.user$$.next(user);
+      }));
   }
 
   logout() {

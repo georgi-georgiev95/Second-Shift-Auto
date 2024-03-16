@@ -42,7 +42,6 @@ export class RegisterComponent {
       .register(formData as UserReg)
       .subscribe((data) => {
         if (data?.error) {
-          window.alert(data.error);
           this.registerForm.reset();
           return;
         }

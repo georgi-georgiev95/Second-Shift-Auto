@@ -27,7 +27,6 @@ export class LoginComponent {
       .login(formData as UserLogin)
       .subscribe((data) => {
         if (data?.error) {
-          window.alert(data.error);
           this.loginForm.reset();
           return;
         }
