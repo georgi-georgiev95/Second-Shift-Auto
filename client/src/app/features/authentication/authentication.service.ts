@@ -8,7 +8,11 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 export class AuthenticationService {
   private user$$ = new BehaviorSubject<AuthRes | undefined>(undefined); 
-  user$ = this.user$$.asObservable();
+  // user$ = this.user$$.asObservable();
+  
+  get isLoggedIn() {
+    return !!this.user$$.value
+  }
 
   constructor(private http: HttpClient) {
 

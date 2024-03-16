@@ -10,7 +10,13 @@ import { AuthenticationService } from 'src/app/features/authentication/authentic
 export class HeaderComponent {
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
   
+  get isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn;
+  }
+
   logout(): void {
-    this.authenticationService.logout().subscribe(() => this.router.navigate(['/users/login']));
+    this.authenticationService.logout().subscribe(() => {
+      this.router.navigate(['/users/login']);
+    });
   }
 }

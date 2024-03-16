@@ -8,11 +8,11 @@
   </div>
   <div>
     <ul>
-      <ng-container>
+      <ng-container *ngIf="isLoggedIn">
         <li routerLink="/users/profile">Profile</li>
         <li (click)="logout()">Logout</li>
       </ng-container>
-      <ng-container>
+      <ng-container *ngIf="!isLoggedIn">
         <li routerLink="/users/login">Login</li>
         <li routerLink="/users/register">Register</li>
       </ng-container>
