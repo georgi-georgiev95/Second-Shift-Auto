@@ -5,18 +5,26 @@ import { AuthenticationService } from 'src/app/features/authentication/authentic
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
-  
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
+
   get isLoggedIn(): boolean {
-    return this.authenticationService.isLoggedIn;
+    return localStorage.getItem('userData') !== null;
   }
 
   logout(): void {
-    this.authenticationService.logout().subscribe(() => {
-      this.router.navigate(['/users/login']);
+    this.authenticationService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/users/login']);
+      },
+      error: () => {
+        this.router.navigate(['/users/login']);
+      },
     });
   }
 }
