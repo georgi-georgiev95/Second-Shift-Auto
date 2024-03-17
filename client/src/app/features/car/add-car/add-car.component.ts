@@ -55,7 +55,6 @@ export class AddCarComponent {
 
   onSubmit() {
     if (this.carForm.valid) {
-      debugger;
       let owner: string = JSON.parse(localStorage.getItem('userData') || '{}').userId;
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
@@ -63,6 +62,7 @@ export class AddCarComponent {
           alert(data.error);
           return;
         }
+        console.log(data);
         this.router.navigate(['/cars/catalog']);
       });
     } else {
