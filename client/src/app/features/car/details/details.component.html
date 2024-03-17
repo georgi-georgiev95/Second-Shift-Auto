@@ -1,1 +1,39 @@
-<p>details works!</p>
+<div class="container">
+    <div class="content">
+      <h1 class="page-title">Audi RS6</h1>   
+      <div class="demo">
+          <div class="left">
+              <img class="main-img" [src]="imageUrl">
+              <div class="thumbnail">
+                <img *ngFor="let img of carData?.additionalImages" (click)="changeImage(img.url)" src="{{img.url}}">          
+              </div>
+          </div>
+          <div class="right">
+              <div class="car-data">
+                  <div class="left-data">
+                      <p><span>Make:</span> {{carData?.make}}</p>
+                      <p><span>Model:</span> {{carData?.model}}</p>
+                      <p><span>Year:</span> {{carData?.year}}</p>
+                      <p><span>Engine Type:</span> {{carData?.engineType}}</p>
+                      <p><span>Power:</span> {{carData?.power}}</p>
+                      <p><span>Gearbox:</span> {{carData?.gearbox}}</p>
+                      <p><span>Category:</span> {{carData?.category}}</p>
+                      <p><span>Mileage:</span> {{carData?.mileage}}km</p>
+                      <p><span>Color:</span> {{carData?.color}}</p>
+                      <p><span>Description:</span> {{carData?.description}}</p>
+                      <p><span>Location:</span> {{carData?.location}}</p>
+                  </div>
+                  <div class="right-data">
+                      <p><span class="price-tag">Price: {{carData?.price}}BGN</span></p>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
+                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/delete">Delete</button>
+                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/buy">Buy</button>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
