@@ -38,5 +38,6 @@ export interface Car {
   image: string;
   location: string;
   additionalImages: additionalImages[];
+  owner?: string;
   error?: string;
 }
