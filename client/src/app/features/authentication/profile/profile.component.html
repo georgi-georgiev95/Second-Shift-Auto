@@ -1,1 +1,16 @@
-<p>{{userData.email}}</p>
+<div class="container">
+  <div class="content">
+    <div class="section">
+        <img src="/assets/profile.png" alt="default user" />
+    <h3>User Info:</h3>
+      <div class="flex">
+        <p [style]="{ fontWeight: 'bold' }">Username:</p>
+        <p>{{ userData.username }}</p>
+      </div>
+      <div class="flex">
+        <p [style]="{ fontWeight: 'bold' }">Email:</p>
+        <p>{{ userData.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
