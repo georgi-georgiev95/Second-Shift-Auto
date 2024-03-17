@@ -14,6 +14,11 @@ export class CarApiService {
       .get<Car[]>('/cars/catalog');
   }
 
+  getCar() {
+    return this.http
+      .get<Car[]>('/cars/catalog');
+  }
+
   createCar(carObj: Car, owner: string) {
     return this.http
       .post<Car>('/cars/create', {carObj, owner})
