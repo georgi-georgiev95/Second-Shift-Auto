@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthActivate],
   },
   {
-    path: 'details/:id',
+    path: 'details/:carId',
     component: DetailsComponent,
   }
 ];
