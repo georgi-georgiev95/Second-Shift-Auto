@@ -27,10 +27,14 @@
                       <p><span class="price-tag">Price: {{carData?.price}}BGN</span></p>
                     </div>
                 </div>
-                <div class="btns">
-                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
-                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/delete">Delete</button>
-                    <button class="button-details" routerLink="/cars/details/{{carData?._id}}/buy">Buy</button>
+                <div class="btns" *ngIf="isLoggedIn">
+                    <ng-container *ngIf="isOwner">
+                        <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
+                        <button class="button-details" routerLink="/cars/details/{{carData?._id}}/delete">Delete</button>
+                    </ng-container>
+                    <ng-container *ngIf="!isOwner">
+                        <button class="button-details" routerLink="/cars/details/{{carData?._id}}/buy">Buy</button>
+                    </ng-container>
               </div>
           </div>
       </div>

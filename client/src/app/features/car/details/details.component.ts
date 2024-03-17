@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/types/car.interface';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-details',
@@ -14,9 +15,21 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private carApiService: CarApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authenticationService: AuthenticationService
   ) {}
 
+  get isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn;
+  }
+
+  get isOwner(): boolean {
+    if (this.carData?.owner === JSON.parse(localStorage.getItem('userData') || '{}').userId) {
+      return true;
+    }
+    return false;
+  }
+  
   ngOnInit(): void {
     this.getCar().subscribe((data) => {
       this.carData = data;
