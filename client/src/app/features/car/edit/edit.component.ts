@@ -11,7 +11,7 @@ import { Car } from 'src/app/types/car.interface';
 })
 export class EditComponent implements OnInit {
   carForm: FormGroup;
-  carId: string | undefined;
+  carId: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -107,13 +107,13 @@ export class EditComponent implements OnInit {
         localStorage.getItem('userData') || '{}'
       ).userId;
       const carObj = this.carForm.value as unknown as Car;
-      this.carApiService.createCar(carObj, owner).subscribe((data) => {
+      this.carApiService.updateCar(carObj, owner, this.carId).subscribe((data) => {
         if (data.error) {
           alert(data.error);
           return;
         }
         console.log(data);
-        this.router.navigate([`/cars/details/${data._id}`]);
+        this.router.navigate([`/cars/details/${this.carId}`]);
       });
     } else {
       // Form is invalid, display error messages
