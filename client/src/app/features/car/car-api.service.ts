@@ -23,6 +23,12 @@ export class CarApiService {
       .pipe(tap((data) => console.log(data)));
   }
 
+  updateCar(carObj: Car, owner: string, carId: string) {
+    return this.http
+      .post<Car>(`/cars/details/${carId}/edit`, { carObj, owner })
+      .pipe(tap((data) => console.log(data)));
+  }
+
   getSearchedCars(
     make: string,
     year: string,
