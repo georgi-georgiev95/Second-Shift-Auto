@@ -8,7 +8,8 @@ router.get('/catalog', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    const car = req.body.car;
+    console.log(req.body);
+    const car = req.body.carObj;
     car.owner = req.body.owner;
 
     try {

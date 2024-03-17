@@ -38,6 +38,10 @@ export class AddCarComponent {
   }
 
   addAdditionalImage() {
+    if (this.additionalImages.length === 4) {
+      window.alert('Cannot add more than 4 images');
+      return;
+    }
     this.additionalImages.push(
       this.fb.group({
         url: ['', Validators.required],
@@ -51,14 +55,14 @@ export class AddCarComponent {
 
   onSubmit() {
     if (this.carForm.valid) {
-      let owner: string = localStorage.getItem('userId') || '';
-      const carObj: Car = this.carForm.value as unknown as Car;
+      debugger;
+      let owner: string = JSON.parse(localStorage.getItem('userData') || '{}').userId;
+      const carObj = this.carForm.value as unknown as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
           alert(data.error);
           return;
         }
-        console.log(data);
         this.router.navigate(['/cars/catalog']);
       });
     } else {
