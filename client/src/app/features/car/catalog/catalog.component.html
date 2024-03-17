@@ -3,19 +3,15 @@
     <h1 class="page-title">Catalog</h1>
     <div class="search">
       <form [formGroup]="searchForm" (ngSubmit)="filterCars()">
-        <label for="make">Make:</label>
-        <input type="text" formControlName="make" />
-        <label for="year">Year:</label>
-        <input type="text" formControlName="year" />
-        <label for="maxPrice">Max Price:</label>
-        <input type="text" formControlName="maxPrice" />
-        <label for="minPrice">Min Price:</label>
-        <input type="text" formControlName="minPrice" />
+        <input type="text" formControlName="make" placeholder="Enter make" />
+        <input type="text" formControlName="year" placeholder="Enter year" />
+        <input type="text" formControlName="minPrice" placeholder="Enter min price"/>
+        <input type="text" formControlName="maxPrice" placeholder="Enter max price"/>
         <button type="submit">Search</button>
       </form>
     </div>
+    <div class="not-found" *ngIf="!result">No cars found.</div>
     <div class="demo" *ngFor="let car of allCars">
-      <div class="not-found" *ngIf="allCars.length === 0">No cars found.</div>
       <div class="left">
         <img src="{{ car.image }}" />
       </div>
