@@ -22,11 +22,18 @@ export class AuthActivate implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     
-    if(!this.authenticationService.isLoggedIn) {
-      return true;
+    if (!this.authenticationService.isLoggedIn) {
+      if (route.url[0].path === 'profile') {
+        this.router.navigate(['/users/login']);
+        return false;
+      }
+      return true; //can proceed
     } else {
+      if (route.url[0].path === 'profile') {
+        return true;
+      }
       this.router.navigate(['/404']);
-      return false;
+      return false; //cannot proceed
     }
   }
 }
