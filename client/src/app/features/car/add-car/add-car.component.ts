@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { CarApiService } from '../car-api.service';
+import { Router } from '@angular/router';
+import { Car } from 'src/app/types/car.interface';
 
 @Component({
   selector: 'app-add-car',
@@ -24,5 +27,43 @@ export class AddCarComponent {
     additionalImages: this.fb.array([]),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private carApiService: CarApiService,
+    private router: Router
+  ) {}
+
+  get additionalImages(): FormArray {
+    return this.carForm.get('additionalImages') as FormArray;
+  }
+
+  addAdditionalImage() {
+    this.additionalImages.push(
+      this.fb.group({
+        url: ['', Validators.required],
+      })
+    );
+  }
+
+  removeAdditionalImage(index: number) {
+    this.additionalImages.removeAt(index);
+  }
+
+  onSubmit() {
+    if (this.carForm.valid) {
+      let owner: string = localStorage.getItem('userId') || '';
+      const carObj: Car = this.carForm.value as unknown as Car;
+      this.carApiService.createCar(carObj, owner).subscribe((data) => {
+        if (data.error) {
+          alert(data.error);
+          return;
+        }
+        console.log(data);
+        this.router.navigate(['/cars/catalog']);
+      });
+    } else {
+      // Form is invalid, display error messages
+      console.log('Form is invalid!');
+    }
+  }
 }
