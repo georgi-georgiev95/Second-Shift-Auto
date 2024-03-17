@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
 import { Car } from 'src/app/types/car.interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-catalog',
@@ -9,8 +10,15 @@ import { Car } from 'src/app/types/car.interface';
 })
 export class CatalogComponent implements OnInit {
   allCars: Car[] = [];
+  searchForm: FormGroup = this.fb.group({
+    make: [''],
+    year: [''],
+    maxPrice: [''],
+    minPrice: [''],
+    city: ['']
+  })
 
-  constructor(private carApiService: CarApiService) { }
+  constructor(private carApiService: CarApiService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getAllCars().subscribe(data => {
@@ -20,5 +28,9 @@ export class CatalogComponent implements OnInit {
   
   getAllCars () {
     return this.carApiService.getCars();
+  }
+
+  filterCars() {
+    //
   }
 }

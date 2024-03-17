@@ -210,3 +210,11 @@ span.price-tag{
   font-size: 80px;
   font-style: italic;
 }
+
+.search {
+  margin: 20px;
+}
+
+.search input {
+  margin-right: 10px
+}

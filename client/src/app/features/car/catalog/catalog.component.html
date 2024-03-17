@@ -1,26 +1,46 @@
 <div class="container">
   <div class="content">
     <h1 class="page-title">Catalog</h1>
-    <div class="not-found" *ngIf="allCars.length === 0">No cars found.</div>
+    <div class="search">
+      <form [formGroup]="searchForm" (ngSubmit)="filterCars()">
+        <label for="make">Make:</label>
+        <input type="text" formControlName="make" />
+        <label for="year">Year:</label>
+        <input type="text" formControlName="year" />
+        <label for="maxPrice">Max Price:</label>
+        <input type="text" formControlName="maxPrice" />
+        <label for="minPrice">Min Price:</label>
+        <input type="text" formControlName="minPrice" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
     <div class="demo" *ngFor="let car of allCars">
-        <div class="left">
-            <img src="{{car.image}}">
+      <div class="not-found" *ngIf="allCars.length === 0">No cars found.</div>
+      <div class="left">
+        <img src="{{ car.image }}" />
+      </div>
+      <div class="right">
+        <h1>{{ car.make }} {{ car.model }}</h1>
+        <div class="car-data">
+          <div class="left-data">
+            <p><span>Mileage:</span> {{ car.mileage }}km</p>
+            <p><span>Power:</span> {{ car.power }}hp</p>
+            <p><span>Type:</span> {{ car.category }}</p>
+            <p><span>City:</span> {{ car.location }}</p>
+          </div>
+          <div class="right-data">
+            <p>
+              <span class="price-tag">Price: {{ car.price }}BGN</span>
+            </p>
+            <button
+              class="button-details"
+              routerLink="/cars/details/{{ car._id }}"
+            >
+              Details
+            </button>
+          </div>
         </div>
-        <div class="right">
-            <h1>{{car.make}} {{car.model}}</h1>
-            <div class="car-data">
-                <div class="left-data">
-                    <p><span>Mileage:</span> {{car.mileage}}km</p>
-                    <p><span>Power:</span> {{car.power}}hp</p>
-                    <p><span>Type:</span> {{car.category}}</p>
-                    <p><span>City:</span> {{car.location}}</p>
-                </div>
-                <div class="right-data">
-                    <p><span class="price-tag">Price: {{car.price}}BGN</span></p>
-                    <button class="button-details" routerLink="/cars/details/{{car._id}}">Details</button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>
