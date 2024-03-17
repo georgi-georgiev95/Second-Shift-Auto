@@ -13,4 +13,10 @@ export class CarApiService {
     return this.http
       .get<Car[]>('/cars/catalog');
   }
+
+  createCar(carObj: Car, owner: string) {
+    return this.http
+      .post<Car>('/cars/create', {carObj, owner})
+      .pipe(tap((data) => console.log(data)));
+  }
 }
