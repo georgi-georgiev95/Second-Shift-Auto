@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
+    path: 'cars',
+    loadChildren: () => import('./features/car/car.module').then(m => m.CarModule)
+  },
+  {
     path: '404',
     component: NotFoundComponent
   },
