@@ -20,3 +20,8 @@ export interface AuthRes {
     username?: string,
     error?: string
 }
+
+export interface Profile {
+    username: string,
+    email: string
+}
