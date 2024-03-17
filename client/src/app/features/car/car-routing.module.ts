@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './catalog/catalog.component';
 import { AddCarComponent } from './add-car/add-car.component';
+import { AuthActivate } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'sell',
-    component: AddCarComponent
+    component: AddCarComponent,
+    canActivate: [AuthActivate],
   }
 ];
 

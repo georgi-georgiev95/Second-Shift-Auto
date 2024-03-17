@@ -23,13 +23,15 @@ export class AuthActivate implements CanActivate {
     | Promise<boolean | UrlTree> {
     
     if (!this.authenticationService.isLoggedIn) {
-      if (route.url[0].path === 'profile') {
+      if (route.url[0].path === 'profile'
+      || route.url[0].path === 'sell') {
         this.router.navigate(['/users/login']);
         return false;
       }
       return true; //can proceed
     } else {
-      if (route.url[0].path === 'profile') {
+      if (route.url[0].path === 'profile' ||
+      route.url[0].path === 'sell') {
         return true;
       }
       this.router.navigate(['/404']);
