@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CatalogComponent implements OnInit {
   allCars: Car[] = [];
+  result: boolean = false;
   searchForm: FormGroup = this.fb.group({
     make: [''],
     year: [''],
@@ -23,6 +24,7 @@ export class CatalogComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCars().subscribe(data => {
       this.allCars = data;
+      this.result = true;
     })
   }
   
@@ -31,6 +33,13 @@ export class CatalogComponent implements OnInit {
   }
 
   filterCars() {
-    //
+    return this.carApiService.getSearchedCars(this.searchForm.value.make, this.searchForm.value.year, this.searchForm.value.maxPrice, this.searchForm.value.minPrice).subscribe(data => {
+      this.allCars = data;
+      if(data.length === 0) {
+        this.result = false;
+      } else {
+        this.result = true;
+      }
+    });
   }
 }
