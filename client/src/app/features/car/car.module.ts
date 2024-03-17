@@ -5,6 +5,7 @@ import { CarRoutingModule } from './car-routing.module';
 import { AddCarComponent } from './add-car/add-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -12,7 +13,8 @@ import { DetailsComponent } from './details/details.component';
   declarations: [
     CatalogComponent,
     AddCarComponent,
-    DetailsComponent
+    DetailsComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
