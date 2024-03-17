@@ -10,23 +10,27 @@ export class CarApiService {
   constructor(private http: HttpClient) {}
 
   getCars() {
-    return this.http
-      .get<Car[]>('/cars/catalog');
+    return this.http.get<Car[]>('/cars/catalog');
   }
 
-  getCar() {
-    return this.http
-      .get<Car[]>('/cars/catalog');
+  getCar(carId: string) {
+    return this.http.get<Car>(`/cars/details/${carId}`);
   }
 
   createCar(carObj: Car, owner: string) {
     return this.http
-      .post<Car>('/cars/create', {carObj, owner})
+      .post<Car>('/cars/create', { carObj, owner })
       .pipe(tap((data) => console.log(data)));
   }
 
-  getSearchedCars(make: string, year: string, maxPrice: string, minPrice: string) {
-    return this.http
-      .get<Car[]>('/cars/search', {params: {make, year, maxPrice, minPrice}});
+  getSearchedCars(
+    make: string,
+    year: string,
+    maxPrice: string,
+    minPrice: string
+  ) {
+    return this.http.get<Car[]>('/cars/search', {
+      params: { make, year, maxPrice, minPrice },
+    });
   }
 }
