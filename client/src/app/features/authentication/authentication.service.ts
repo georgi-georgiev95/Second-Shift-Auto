@@ -17,6 +17,9 @@ export class AuthenticationService{
     }
   }
 
+  get isLoggedIn(): boolean {
+    return localStorage.getItem('userData') !== null;
+  }
   
   constructor(private http: HttpClient) {}
 
