@@ -19,12 +19,18 @@ export class CatalogComponent implements OnInit {
     city: ['']
   })
 
-  constructor(private carApiService: CarApiService, private fb: FormBuilder) { }
+  constructor(private carApiService: CarApiService, private fb: FormBuilder) {
+    this.result = true;
+  }
 
   ngOnInit(): void {
     this.getAllCars().subscribe(data => {
       this.allCars = data;
-      this.result = true;
+      if(data.length === 0) {
+        this.result = false;
+      } else {
+        this.result = true;
+      }
     })
   }
   
