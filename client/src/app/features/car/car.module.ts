@@ -4,13 +4,15 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CarRoutingModule } from './car-routing.module';
 import { AddCarComponent } from './add-car/add-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
 
 
 
 @NgModule({
   declarations: [
     CatalogComponent,
-    AddCarComponent
+    AddCarComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
