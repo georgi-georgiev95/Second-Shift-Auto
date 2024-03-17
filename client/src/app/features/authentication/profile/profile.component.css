@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.section {
+    background-color: white;
+    -webkit-box-shadow: 0 0 8px gray;
+    filter: drop-shadow(gray 0 0 3px);
+    width: fit-content;
+    padding: 20px;
+    width: 700px;
+    height: 500px;
+}
+
+img{
+    width: 200px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    padding-left: 7px;
+}
