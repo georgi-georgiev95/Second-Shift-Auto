@@ -37,7 +37,36 @@ router.put('/edit/:carId', async (req, res) => {
 router.delete('/delete/:carId', async (req, res) => {
     const carId = req.params.carId;
     await carService.delete(carId);
-    res.json({ok: true});
+    res.json({ ok: true });
+});
+
+router.get('/search', async (req, res) => { 
+    const make = req.query.make;
+    const year = Number(req.query.year);
+    const maxPrice = Number(req.query.maxPrice);
+    const minPrice = Number(req.query.minPrice);
+
+    try {
+        let query = {};
+        if (make) {
+            query.make = new RegExp(`^${make}$`, 'i');
+        }
+        if (year) {
+            query.year = Number(year);
+        }
+        if (minPrice && maxPrice) {
+            query.price = { $gte: Number(minPrice), $lte: Number(maxPrice) };
+        } else if (minPrice) {
+            query.price = { $gte: Number(minPrice) };
+        } else if (maxPrice) {
+            query.price = { $lte: Number(maxPrice) };
+        }
+        const data = await carService.search(query);
+        res.json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 })
 
 
