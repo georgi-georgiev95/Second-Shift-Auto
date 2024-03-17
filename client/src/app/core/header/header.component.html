@@ -3,7 +3,9 @@
     <ul>
       <li routerLink="/">Home</li>
       <li routerLink="/cars/catalog">Catalog</li>
-      <li routerLink="/cars/sell">Sell</li>
+      <ng-container *ngIf="isLoggedIn">
+        <li routerLink="/cars/sell">Sell</li>
+      </ng-container>
     </ul>
   </div>
   <div>
