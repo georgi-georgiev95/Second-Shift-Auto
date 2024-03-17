@@ -1,0 +1,98 @@
+.container {
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+/* car-form.component.css */
+
+.car-form {
+  width: 1000px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 400px;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+textarea {
+    max-width: 400px;
+    min-width: 400px;
+    height: 100px;
+    width: 400px;
+}
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.additional-image-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.additional-image-input {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.additional-image-button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.additional-image-button:hover {
+  background-color: #d9534f;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
