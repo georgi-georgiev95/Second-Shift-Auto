@@ -19,4 +19,9 @@ export class CarApiService {
       .post<Car>('/cars/create', {carObj, owner})
       .pipe(tap((data) => console.log(data)));
   }
+
+  getSearchedCars(make: string, year: string, maxPrice: string, minPrice: string) {
+    return this.http
+      .get<Car[]>('/cars/search', {params: {make, year, maxPrice, minPrice}});
+  }
 }
