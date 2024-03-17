@@ -23,5 +23,6 @@ export interface AuthRes {
 
 export interface Profile {
     username: string,
-    email: string
+    email: string,
+    userId: string
 }
