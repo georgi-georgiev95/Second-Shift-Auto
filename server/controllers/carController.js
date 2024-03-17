@@ -8,7 +8,6 @@ router.get('/catalog', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    console.log(req.body);
     const car = req.body.carObj;
     car.owner = req.body.owner;
 
@@ -20,6 +19,19 @@ router.post('/create', async (req, res) => {
     }
     
 });
+
+router.post('/details/:carId/edit', async (req, res) => {
+    const car = req.body.carObj;
+    car.owner = req.body.owner;
+    const carId = req.params.carId;
+
+    try {
+        await carService.update(carId, car);
+        res.send({ ok: true });
+    } catch (err) {
+        res.send({ error: err });
+    }
+})
 
 router.get('/details/:carId', async (req, res) => {
     const carId = req.params.carId;
@@ -68,6 +80,7 @@ router.get('/search', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 })
+
 
 
 module.exports = router;
