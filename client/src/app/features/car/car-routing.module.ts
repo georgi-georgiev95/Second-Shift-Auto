@@ -5,6 +5,7 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { AuthActivate } from 'src/app/core/guards/auth.guard';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { CarActionsActivate } from 'src/app/core/guards/car.guard';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   {
     path: 'details/:carId/edit',
     component: EditComponent,
+    canActivate: [CarActionsActivate]
   }
 ];
 

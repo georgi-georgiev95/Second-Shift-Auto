@@ -21,8 +21,8 @@ export class AppInterceptor implements HttpInterceptor {
               console.log(req);
           }),
           catchError((err) => {
-            if (err.status === 400) {
-              console.error('Error from Interceptor', err);
+            if (err.status === 401) {
+              console.error('You are not authorized');
               return EMPTY;
             }
 
