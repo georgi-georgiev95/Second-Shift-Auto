@@ -65,7 +65,7 @@ exports.isAuth = async (req, res, next) => {
 
     if(userId != carOwner) {
         const error = new Error();
-        error.status = 400;
+        error.status = 401;
         error.message = 'You are not authorized';
         return next(error);
     }

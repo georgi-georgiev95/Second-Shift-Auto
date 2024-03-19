@@ -28,11 +28,11 @@ router.post('/details/:carId/edit', isAuth, async (req, res) => {
 
     try {
         await carService.update(carId, car);
-        res.send({ ok: true });
+        res.status(200).send({ ok: true });
     } catch (err) {
         res.status(400).send({ error: err });
     }
-})
+});
 
 router.get('/details/:carId', async (req, res) => {
     const carId = req.params.carId;
