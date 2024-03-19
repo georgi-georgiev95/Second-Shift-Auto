@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const carService = require("../services/carService");
+const {isAuth}= require('../middlewares/authMiddleware');
 
 router.get('/catalog', async (req, res) => {
     const data = await carService.getAll();
@@ -20,7 +21,7 @@ router.post('/create', async (req, res) => {
     
 });
 
-router.post('/details/:carId/edit', async (req, res) => {
+router.post('/details/:carId/edit', isAuth, async (req, res) => {
     const car = req.body.carObj;
     car.owner = req.body.owner;
     const carId = req.params.carId;
@@ -29,7 +30,7 @@ router.post('/details/:carId/edit', async (req, res) => {
         await carService.update(carId, car);
         res.send({ ok: true });
     } catch (err) {
-        res.send({ error: err });
+        res.status(400).send({ error: err });
     }
 })
 
