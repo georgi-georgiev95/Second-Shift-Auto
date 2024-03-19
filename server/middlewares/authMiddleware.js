@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken');
-const SECRET = "SECRET_KEY";
+const {constants} = require('../constants');
+const SECRET = constants.SECRET;
 
 exports.auth = async (req, res, next) => {
     const token = req.headers['X-Authorization'];
 
     if (token) {
         try {
-            const decodedToken = jwt.verify(token, ENV.SECRET);
+            const decodedToken = jwt.verify(token, SECRET);
             req.user = decodedToken;
             next();
         } catch (err) {
