@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const {constants} = require("../constants");
+
 const userService = require("../services/userService");
-const jwt = require("jsonwebtoken");
 
 router.post('/login', async (req, res) => {
     const userData = req.body;
@@ -15,17 +14,6 @@ router.post('/login', async (req, res) => {
     }
     
 });
-
-router.get('/authorize', (req, res) => {
-    const token = req.cookies[constants.cookie];
-
-    try {
-        const decodedToken = jwt.verify(token, constants.SECRET);
-        res.status(200).send(decodedToken);
-    } catch (err) {
-        res.status(401).send({ error: 'Unauthorized' });
-    }
-})
 
 router.post('/register', async (req, res) => {
     const userData = req.body;
