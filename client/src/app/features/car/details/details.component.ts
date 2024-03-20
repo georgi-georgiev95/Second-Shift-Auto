@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/types/car.interface';
 import { AuthenticationService } from '../../authentication/authentication.service';
 
@@ -16,7 +16,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private carApiService: CarApiService,
     private activatedRoute: ActivatedRoute,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private route: Router
   ) {}
 
   get isLoggedIn(): boolean {
@@ -29,7 +30,13 @@ export class DetailsComponent implements OnInit {
     }
     return false;
   }
-  
+
+  deleteCar(carId: string | undefined) {
+    this.carApiService.deleteCar(carId).subscribe(() => {
+      this.route.navigate(['/cars/catalog']);
+    });
+  }
+
   ngOnInit(): void {
     this.getCar().subscribe((data) => {
       this.carData = data;

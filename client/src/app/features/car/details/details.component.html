@@ -30,7 +30,7 @@
                 <div class="btns" *ngIf="isLoggedIn">
                     <ng-container *ngIf="isOwner">
                         <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
-                        <button class="button-details" routerLink="/cars/details/{{carData?._id}}/delete">Delete</button>
+                        <button class="button-details" (click)="deleteCar(carData?._id)">Delete</button>
                     </ng-container>
                     <ng-container *ngIf="!isOwner">
                         <button class="button-details" routerLink="/cars/details/{{carData?._id}}/buy">Buy</button>

@@ -29,6 +29,12 @@ export class CarApiService {
       .pipe(tap((data) => console.log(data)));
   }
 
+  deleteCar(carId: string | undefined) {
+    return this.http
+      .delete<Car>(`/cars/details/${carId}/delete`)
+      .pipe(tap((data) => console.log(data)));
+  }
+
   getSearchedCars(
     make: string,
     year: string,
