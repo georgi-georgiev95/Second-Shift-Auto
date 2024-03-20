@@ -40,12 +40,15 @@ router.get('/details/:carId', async (req, res) => {
     res.json(car);
 });
 
-router.put('/edit/:carId', async (req, res) => {
-    const carData = req.body;
+router.delete('/details/:carId/delete', isAuth, async (req, res) => {
     const carId = req.params.carId;
-    const car = await carService.edit(carId, carData);
-    res.json(car);
-});
+    try {
+        await carService.delete(carId);
+        res.json({ ok: true });
+    } catch (err) {
+        res.status(400).send({ error: err });
+    }
+})
 
 router.delete('/delete/:carId', async (req, res) => {
     const carId = req.params.carId;
