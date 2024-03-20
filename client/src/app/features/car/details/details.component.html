@@ -1,6 +1,7 @@
 <div class="container">
     <div class="content">
       <h1 class="page-title">Audi RS6</h1>   
+      <p class="price"><span class="price-tag">Price: {{carData?.price}}BGN</span></p>
       <div class="demo">
           <div class="left">
               <img class="main-img" [src]="imageUrl">
@@ -20,11 +21,11 @@
                       <p><span>Category:</span> {{carData?.category}}</p>
                       <p><span>Mileage:</span> {{carData?.mileage}}km</p>
                       <p><span>Color:</span> {{carData?.color}}</p>
-                      <p><span>Description:</span> {{carData?.description}}</p>
                       <p><span>Location:</span> {{carData?.location}}</p>
                   </div>
                   <div class="right-data">
-                      <p><span class="price-tag">Price: {{carData?.price}}BGN</span></p>
+                      <!-- <p><span class="price-tag">Price: {{carData?.price}}BGN</span></p> -->
+                      <p><span>Description:</span> {{carData?.description}}</p>
                     </div>
                 </div>
                 <div class="btns" *ngIf="isLoggedIn">
