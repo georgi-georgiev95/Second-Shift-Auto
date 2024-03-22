@@ -6,6 +6,7 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { EditComponent } from './edit/edit.component';
   imports: [
     CommonModule,
     CarRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class CarModule { }
