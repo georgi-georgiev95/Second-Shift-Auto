@@ -26,7 +26,7 @@
           </div>
           <div class="right-data">
             <p>
-              <span class="price-tag">Price: {{ car.price }}BGN</span>
+              <span class="price-tag">Price: {{ car.price | currencyFormater }}BGN</span>
             </p>
             <button
               class="button-details"
