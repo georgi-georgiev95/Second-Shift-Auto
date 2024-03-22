@@ -14,7 +14,7 @@ export class HeaderComponent {
   ) {}
 
   get isLoggedIn(): boolean {
-    return localStorage.getItem('userData') !== null;
+    return this.authenticationService.isLoggedIn;
   }
 
   logout(): void {
