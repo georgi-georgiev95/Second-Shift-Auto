@@ -33,6 +33,10 @@ export class AuthenticationService{
 
   }
 
+  getUserProfile() {
+    return this.http.get<AuthRes>('/api/users/profile').pipe(tap(user => this.userSbj$$.next(user)));
+  }
+
   login(formData: UserLogin) {
     return this.http
       .post<AuthRes>('/api/users/login', formData)
