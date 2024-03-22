@@ -1,5 +1,6 @@
 <div class="container">
-  <div>
+  <nav>
+  <div class="left">
     <ul>
       <li routerLink="/">Home</li>
       <li routerLink="/cars/catalog">Catalog</li>
@@ -8,7 +9,7 @@
       </ng-container>
     </ul>
   </div>
-  <div>
+  <div class="right">
     <ul>
       <ng-container *ngIf="isLoggedIn">
         <li routerLink="/users/profile">Profile</li>
@@ -20,4 +21,5 @@
       </ng-container>
     </ul>
   </div>
+  </nav>
 </div>
