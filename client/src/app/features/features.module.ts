@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterLink,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class FeaturesModule { }

@@ -1,12 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'currencyFormater'
+  name: 'currencyFormater',
 })
 export class CurrencyFormaterPipe implements PipeTransform {
+  transform(value: number): string {
+    // Convert number to string
+    let strNumber = value.toString();
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+    // Regular expression to insert commas
+    strNumber = strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    return strNumber;
   }
-
 }
