@@ -14,7 +14,8 @@ import { CurrencyFormaterPipe } from './pipes/currency-formater.pipe';
     CommonModule
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    CurrencyFormaterPipe
   ]
 })
 export class SharedModule { }
