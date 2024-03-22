@@ -10,28 +10,28 @@ export class CarApiService {
   constructor(private http: HttpClient) {}
 
   getCars() {
-    return this.http.get<Car[]>('/cars/catalog');
+    return this.http.get<Car[]>('/api/cars/catalog');
   }
 
   getCar(carId: string) {
-    return this.http.get<Car>(`/cars/details/${carId}`);
+    return this.http.get<Car>(`/api/cars/details/${carId}`);
   }
 
   createCar(carObj: Car, owner: string) {
     return this.http
-      .post<Car>('/cars/create', { carObj, owner })
+      .post<Car>('/api/cars/create', { carObj, owner })
       .pipe(tap((data) => console.log(data)));
   }
 
   updateCar(carObj: Car, owner: string, carId: string) {
     return this.http
-      .post<Car>(`/cars/details/${carId}/edit`, { carObj, owner })
+      .post<Car>(`/api/cars/details/${carId}/edit`, { carObj, owner })
       .pipe(tap((data) => console.log(data)));
   }
 
   deleteCar(carId: string | undefined) {
     return this.http
-      .delete<Car>(`/cars/details/${carId}/delete`)
+      .delete<Car>(`/api/cars/details/${carId}/delete`)
       .pipe(tap((data) => console.log(data)));
   }
 
@@ -41,7 +41,7 @@ export class CarApiService {
     maxPrice: string,
     minPrice: string
   ) {
-    return this.http.get<Car[]>('/cars/search', {
+    return this.http.get<Car[]>('/api/cars/search', {
       params: { make, year, maxPrice, minPrice },
     });
   }

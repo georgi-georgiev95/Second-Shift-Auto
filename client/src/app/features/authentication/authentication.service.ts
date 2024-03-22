@@ -8,7 +8,8 @@ import { tap } from 'rxjs';
 })
   
 export class AuthenticationService{
- 
+  
+
   private handleResponse(res: AuthRes | undefined) {
     if (res?.error) {
       window.alert(res.error);
@@ -25,19 +26,19 @@ export class AuthenticationService{
 
   login(formData: UserLogin) {
     return this.http
-      .post<AuthRes>('/users/login', formData)
+      .post<AuthRes>('/api/users/login', formData)
       .pipe(tap((res) => this.handleResponse(res)));
   }
 
   register(formData: UserReg) {
     return this.http
-      .post<AuthRes>('/users/register', formData)
+      .post<AuthRes>('/api/users/register', formData)
       .pipe(tap((res) => this.handleResponse(res)));
   }
 
   logout() {
     return this.http
-      .post<AuthRes>('/users/logout', {})
+      .post<AuthRes>('/api/users/logout', {})
       .pipe(tap(() => localStorage.clear()));
   }
 
