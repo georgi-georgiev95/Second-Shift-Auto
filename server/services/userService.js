@@ -36,13 +36,12 @@ exports.login = async (userData) => {
 };
 
 exports.verifyUser = async (token) => {
-    const user = jwt.verify(token, SECRET);
-
-    if(!user) {
-        throw new Error('Invalid token');
+    if (token) {
+        const user = jwt.verify(token, SECRET);
+        if(user) {
+            return user;
+        }
     }
-
-    return user;
 }
 
 
