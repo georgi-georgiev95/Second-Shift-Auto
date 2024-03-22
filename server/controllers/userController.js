@@ -42,4 +42,15 @@ router.post('/logout', (req, res) => {
     }
 })
 
+router.get('/profile', (req, res) => {
+    const cookie = req.cookies['auth-cookie'];
+
+    try {
+        const user = userService.verifyUser(cookie);
+        res.status(200).send(user);
+    } catch (err) {
+        res.status(401).send({ error: err.message });
+    }
+})
+
 module.exports = router;
