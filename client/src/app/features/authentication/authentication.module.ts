@@ -5,6 +5,8 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -17,7 +19,9 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    RouterLink
   ]
 })
 export class AuthenticationModule { }

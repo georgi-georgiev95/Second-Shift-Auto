@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/types/user.interface';
 import { AuthenticationService } from '../authentication.service';
+import { CarApiService } from '../../car/car-api.service';
+import { Car } from 'src/app/types/car.interface';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
-  constructor(private authenticationService: AuthenticationService) {}
+export class ProfileComponent implements OnInit {
   userData: Profile = {
-    username: this.authenticationService.user?.username || '',
-    email: this.authenticationService.user?.email || '',
-    userId: this.authenticationService.user?.userId || '',
+    username: '',
+    email: '',
+    userId: '',
   };
+  userCars: Car[] = [];
+
+  constructor(private authenticationService: AuthenticationService, private carApiService: CarApiService) { }
+  
+  ngOnInit(): void {
+    const userCars = this.carApiService.getUserCars(this.authenticationService.user?.userId!).subscribe(data => {
+      this.userCars = data;
+    });
+
+    this.userData = {
+      username: this.authenticationService.user?.username || '',
+      email: this.authenticationService.user?.email || '',
+      userId: this.authenticationService.user?.userId || '',
+    };
+  }
+  
 }

@@ -18,11 +18,12 @@
     width: fit-content;
     padding: 20px;
     width: 700px;
-    height: 500px;
+    height: max-content;
 }
 
 img{
     width: 200px;
+    cursor: pointer;
 }
 
 .flex {
@@ -32,4 +33,27 @@ img{
 
 p{
     padding-left: 7px;
+}
+
+
+.car-offers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.car-offer {
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.car-offer img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.car-offer .details p {
+  margin: 0;
 }
