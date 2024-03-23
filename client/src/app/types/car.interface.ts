@@ -39,5 +39,6 @@ export interface Car {
   location: string;
   additionalImages: additionalImages[];
   owner?: string;
+  buyer?: string[];
   error?: string;
 }
