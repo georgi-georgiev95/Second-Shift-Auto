@@ -49,4 +49,10 @@ export class CarApiService {
       params: { make, year, maxPrice, minPrice },
     });
   }
+
+  buyCar(carId: string, buyerId: string) {
+    return this.http
+      .post<Car>(`/api/cars/details/${carId}/buy`, { buyerId })
+      .pipe(tap((data) => console.log(data)));
+  }
 }
