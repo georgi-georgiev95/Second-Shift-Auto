@@ -13,11 +13,11 @@ router.get('/user/:userId', async (req, res) => {
     try {
         const data = await carService.getUserCars(userId);
         res.status(200).send(data);
-    } catch(err) {
+    } catch (err) {
         res.status(400).send({ error: err });
     }
     
- })
+});
 
 router.post('/create', async (req, res) => {
     const car = req.body.carObj;
@@ -64,7 +64,24 @@ router.delete('/details/:carId/delete', isAuth, async (req, res) => {
     } catch (err) {
         res.status(400).send({ error: err });
     }
-})
+});
+
+router.post('/details/:carId/buy', async (req, res) => {
+    const carId = req.params.carId;
+    const carData = await carService.getOne(carId);
+    if (carData.buyer.length == 0) { 
+        const buyerId = req.body.buyerId;
+        try {
+            await carService.buyCar(carId, buyerId);
+            res.json({ ok: true });
+        } catch (err) {
+            res.status(400).send({ error: err });
+        }
+    } else {
+        res.status(400).send({ error: "Car already bought" });
+    }
+    
+ })
 
 router.delete('/delete/:carId', async (req, res) => {
     const carId = req.params.carId;
