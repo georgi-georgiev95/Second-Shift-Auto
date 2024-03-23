@@ -177,3 +177,7 @@ span.price-tag {
   width: 200px;
   height: 200px;
 }
+
+.left-data, .right-data p {
+  margin-top: 30px;
+}
