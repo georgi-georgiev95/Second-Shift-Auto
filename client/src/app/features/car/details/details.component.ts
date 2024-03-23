@@ -10,6 +10,8 @@ import { AuthenticationService } from '../../authentication/authentication.servi
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  isBought: boolean = false;
+  isBuyer: boolean = false;
   isLoading = true;
   carData: Car | undefined;
   imageUrl: string | undefined;
@@ -45,6 +47,13 @@ export class DetailsComponent implements OnInit {
         this.carData.additionalImages.push({ url: this.carData?.image });
         this.imageUrl = this.carData?.image;
         this.isLoading = false;
+        this.isBought = !!this.carData?.buyer;
+        if(this.isBought) {
+          this.isBuyer = !!this.carData?.buyer?.includes(this.authenticationService.user?.userId!);
+          if(!this.isBuyer) {
+            this.isBought = false;
+          }
+        }
       },
       error: (error) => {
         console.log(error);
@@ -60,5 +69,16 @@ export class DetailsComponent implements OnInit {
   getCar() {
     const carId = this.activatedRoute.snapshot.params['carId'];
     return this.carApiService.getCar(carId);
+  }
+
+  buyCar(carId: string) {
+    const userId = this.authenticationService.user?.userId;
+    if (userId) {
+      this.carApiService.buyCar(carId, userId).subscribe(() => {
+        this.route.navigate([`/cars/details/${carId}`]);
+      });
+    } else {
+      this.route.navigate(['/login']);
+    }
   }
 }
