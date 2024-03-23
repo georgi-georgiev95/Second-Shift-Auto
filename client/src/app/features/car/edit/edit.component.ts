@@ -101,13 +101,9 @@ export class EditComponent implements OnInit {
       })
     );
   }
-  // Similar methods for adding and removing additional images as in the AddCarComponent
 
   onSubmit() {
     if (this.carForm.valid) {
-      // let owner: string = JSON.parse(
-      //   localStorage.getItem('userData') || '{}'
-      // ).userId;
       let owner: string = this.authenticationService.user?.userId || '';
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.updateCar(carObj, owner, this.carId).subscribe((data) => {

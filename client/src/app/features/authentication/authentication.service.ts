@@ -17,7 +17,6 @@ export class AuthenticationService{
     if (res?.error) {
       window.alert(res.error);
     } else {
-      // localStorage.setItem('userData', JSON.stringify(res));
       this.userSbj$$.next(res);
     }
   }

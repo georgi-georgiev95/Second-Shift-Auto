@@ -35,7 +35,6 @@ export class CarActionsActivate implements CanActivate {
       const car = this.carApiService.getCar(carId).subscribe(data => {
         this.carOwner = data.owner;
         const userId = this.authenticationService.user?.userId;
-        // const userId = JSON.parse(localStorage.getItem('userData') || '{}').userId;
         if(this.carOwner !== userId) {
           this.router.navigate(['/404']);
           return false;

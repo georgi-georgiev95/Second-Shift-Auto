@@ -9,7 +9,6 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class ProfileComponent {
   constructor(private authenticationService: AuthenticationService) {}
-  // userData: Profile = JSON.parse(localStorage.getItem('userData') || '{}');
   userData: Profile = {
     username: this.authenticationService.user?.username || '',
     email: this.authenticationService.user?.email || '',

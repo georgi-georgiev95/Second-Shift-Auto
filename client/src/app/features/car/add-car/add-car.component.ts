@@ -59,7 +59,6 @@ export class AddCarComponent {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
       console.log(this.authenticationService.user);
-      // let owner: string = JSON.parse(localStorage.getItem('userData') || '{}').userId;
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
