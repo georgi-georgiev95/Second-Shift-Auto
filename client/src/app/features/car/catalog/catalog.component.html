@@ -10,6 +10,8 @@
         <button type="submit">Search</button>
       </form>
     </div>
+    <app-loader *ngIf="isLoading" class="loader"></app-loader>
+    <ng-container *ngIf="!isLoading">
     <div class="not-found" *ngIf="!result">No cars found.</div>
     <div class="demo" *ngFor="let car of allCars">
       <div class="left">
@@ -38,5 +40,6 @@
         </div>
       </div>
     </div>
+  </ng-container>
   </div>
 </div>

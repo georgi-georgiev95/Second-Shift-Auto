@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+  isLoading = true;
   allCars: Car[] = [];
   result: boolean = false;
   searchForm: FormGroup = this.fb.group({
@@ -31,6 +32,7 @@ export class CatalogComponent implements OnInit {
       } else {
         this.result = true;
       }
+      this.isLoading = false;
     })
   }
   

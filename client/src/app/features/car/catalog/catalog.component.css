@@ -218,3 +218,11 @@ span.price-tag{
 .search input {
   margin-right: 10px
 }
+
+.loader {
+  position: absolute;
+  top: 100%;
+  left: 30%;
+  width: 200px;
+  height: 200px;
+}
