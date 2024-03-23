@@ -13,6 +13,9 @@
       </div>
       <h3>Car Offers:</h3>
       <div class="offers-section">
+        <ng-container *ngIf="userCars.length == 0">
+          <h2>No offers yet. <span class="link" routerLink="/cars/sell">Create one now?</span></h2>
+        </ng-container>
       <div class="car-offers">
         <div *ngFor="let car of userCars" class="car-offer">
           <img src="{{car.image}}" alt="Car 1" routerLink="/cars/details/{{car._id}}" />

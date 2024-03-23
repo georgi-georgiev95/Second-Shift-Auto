@@ -66,3 +66,12 @@ p{
 .car-offer .details p {
   margin: 0;
 }
+
+span.link {
+  cursor: pointer;
+  font-style: italic;
+}
+
+span.link:hover {
+  text-decoration: underline;
+}
