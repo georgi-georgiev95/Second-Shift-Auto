@@ -21,7 +21,6 @@
 
 .page-title {
   font-size: 60px;
-  padding-bottom: 20px;
 }
 
 .main-img {
@@ -73,12 +72,20 @@
 }
 
 p.price {
-  position: absolute;
+  display: flex;
+  padding-top: 0px;
+  padding-bottom: 80px;
+  max-width: 1200px;
+  justify-content: end;
+  margin: 0 auto;
+}
+
+p.price span {
+  font-weight: bold;
   background-color: green;
+  color: white;
   border-radius: 2rem;
   padding: 10px;
-  right: 20%;
-  top: 0;
 }
 
 span {
