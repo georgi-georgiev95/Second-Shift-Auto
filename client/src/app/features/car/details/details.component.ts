@@ -10,6 +10,7 @@ import { AuthenticationService } from '../../authentication/authentication.servi
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  isLoading = true;
   carData: Car | undefined;
   imageUrl: string | undefined;
 
@@ -43,9 +44,11 @@ export class DetailsComponent implements OnInit {
         this.carData = data;
         this.carData.additionalImages.push({ url: this.carData?.image });
         this.imageUrl = this.carData?.image;
+        this.isLoading = false;
       },
       error: (error) => {
         console.log(error);
+        this.isLoading = false;
       }
     })
   }

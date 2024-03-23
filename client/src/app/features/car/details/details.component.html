@@ -1,5 +1,7 @@
 <div class="container">
     <div class="content">
+      <app-loader *ngIf="isLoading" class="loader"></app-loader>
+      <ng-container *ngIf="!isLoading">
       <h1 class="page-title">Audi RS6</h1>   
       <p class="price"><span class="price-tag">Price: {{carData?.price! | currencyFormater}}BGN</span></p>
       <div class="demo">
@@ -39,6 +41,7 @@
               </div>
           </div>
       </div>
+      </ng-container>
     </div>
   </div>
 
