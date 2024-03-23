@@ -8,6 +8,17 @@ router.get('/catalog', async (req, res) => {
     res.json(data);
 });
 
+router.get('/user/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    try {
+        const data = await carService.getUserCars(userId);
+        res.status(200).send(data);
+    } catch(err) {
+        res.status(400).send({ error: err });
+    }
+    
+ })
+
 router.post('/create', async (req, res) => {
     const car = req.body.carObj;
     car.owner = req.body.owner;
