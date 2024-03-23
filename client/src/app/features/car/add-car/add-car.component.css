@@ -4,6 +4,7 @@
 
 .content {
     position: absolute;
+    padding-bottom: 30px;
     width: 100%;
     text-align: center;
     display: flex;

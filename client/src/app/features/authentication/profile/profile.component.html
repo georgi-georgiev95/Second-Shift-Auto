@@ -11,8 +11,8 @@
         <p [style]="{ fontWeight: 'bold' }">Email:</p>
         <p>{{ userData.email }}</p>
       </div>
-      <div class="offers-section">
       <h3>Car Offers:</h3>
+      <div class="offers-section">
       <div class="car-offers">
         <div *ngFor="let car of userCars" class="car-offer">
           <img src="{{car.image}}" alt="Car 1" routerLink="/cars/details/{{car._id}}" />
@@ -23,6 +23,7 @@
             <p><strong>Price:</strong> {{car.price | currencyFormater}}</p>
           </div>
         </div>
+        <!-- Dummy -->
       </div>
     </div>
     </div>
