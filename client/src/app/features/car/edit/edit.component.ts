@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { CarApiService } from '../car-api.service';
 import { Car } from 'src/app/types/car.interface';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'edit-car',
@@ -17,7 +18,8 @@ export class EditComponent implements OnInit {
     private fb: FormBuilder,
     private carApiService: CarApiService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
     this.carForm = this.fb.group({
       make: ['', Validators.required],
@@ -103,9 +105,10 @@ export class EditComponent implements OnInit {
 
   onSubmit() {
     if (this.carForm.valid) {
-      let owner: string = JSON.parse(
-        localStorage.getItem('userData') || '{}'
-      ).userId;
+      // let owner: string = JSON.parse(
+      //   localStorage.getItem('userData') || '{}'
+      // ).userId;
+      let owner: string = this.authenticationService.user?.userId || '';
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.updateCar(carObj, owner, this.carId).subscribe((data) => {
         if (data.error) {

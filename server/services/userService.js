@@ -48,8 +48,9 @@ exports.verifyUser = async (token) => {
 function generateToken(user) {
 
     const token = jwt.sign({
-        _id: user._id,
-        email: user.email
+        userId: user._id,
+        email: user.email,
+        username: user.username
     }, SECRET);
 
     return {

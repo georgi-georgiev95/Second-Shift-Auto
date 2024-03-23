@@ -26,6 +26,11 @@ export class AppInterceptor implements HttpInterceptor {
               return EMPTY;
             }
 
+            if(err.status === 404) {
+              console.error('Not found');
+              return EMPTY;
+            }
+
             return [err];
           })
         );

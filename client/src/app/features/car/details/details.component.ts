@@ -25,7 +25,7 @@ export class DetailsComponent implements OnInit {
   }
 
   get isOwner(): boolean {
-    if (this.carData?.owner === JSON.parse(localStorage.getItem('userData') || '{}').userId) {
+    if (this.carData?.owner === this.authenticationService.user?.userId) {
       return true;
     }
     return false;
@@ -38,11 +38,16 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCar().subscribe((data) => {
-      this.carData = data;
-      this.carData.additionalImages.push({ url: this.carData?.image });
-      this.imageUrl = this.carData?.image;
-    });
+    this.getCar().subscribe({
+      next: (data) => {
+        this.carData = data;
+        this.carData.additionalImages.push({ url: this.carData?.image });
+        this.imageUrl = this.carData?.image;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
   }
 
   changeImage(url: string) {

@@ -25,6 +25,7 @@ router.post('/details/:carId/edit', isAuth, async (req, res) => {
     const car = req.body.carObj;
     car.owner = req.body.owner;
     const carId = req.params.carId;
+    console.log(car);
 
     try {
         await carService.update(carId, car);
@@ -36,8 +37,12 @@ router.post('/details/:carId/edit', isAuth, async (req, res) => {
 
 router.get('/details/:carId', async (req, res) => {
     const carId = req.params.carId;
-    const car = await carService.getOne(carId);
-    res.json(car);
+    try {
+        const car = await carService.getOne(carId);
+        res.json(car);
+    } catch (err) {
+        res.status(404).send({ error: err });
+    }
 });
 
 router.delete('/details/:carId/delete', isAuth, async (req, res) => {

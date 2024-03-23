@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { CarApiService } from '../car-api.service';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/types/car.interface';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-add-car',
@@ -30,6 +31,7 @@ export class AddCarComponent {
   constructor(
     private fb: FormBuilder,
     private carApiService: CarApiService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -55,7 +57,9 @@ export class AddCarComponent {
 
   onSubmit() {
     if (this.carForm.valid) {
-      let owner: string = JSON.parse(localStorage.getItem('userData') || '{}').userId;
+      let owner: string = this.authenticationService.user?.userId || '';
+      console.log(this.authenticationService.user);
+      // let owner: string = JSON.parse(localStorage.getItem('userData') || '{}').userId;
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {

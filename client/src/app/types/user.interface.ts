@@ -18,7 +18,8 @@ export interface AuthRes {
     email?: string,
     userId?: string,
     username?: string,
-    error?: string
+    error?: string,
+    iat?: number
 }
 
 export interface Profile {

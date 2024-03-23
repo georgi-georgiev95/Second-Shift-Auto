@@ -35,7 +35,7 @@ export class AuthenticationService{
 
   getUserProfile() {
     return this.http.get<AuthRes>('/api/users/profile').pipe(tap(user => {
-      if(user) {
+      if (user) {
         this.userSbj$$.next(user);
       } else {
         this.userSbj$$.next(undefined);

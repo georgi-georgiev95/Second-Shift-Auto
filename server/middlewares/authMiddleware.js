@@ -58,8 +58,8 @@ exports.isGuest = (req, res, next) => {
 exports.isAuth = async (req, res, next) => {
     const token = req.cookies['auth-cookie'];
     const carId = req.params.carId;
-    const result = jwt.verify(token, SECRET);
-    const userId = result._id;
+    const result = await jwt.verify(token, SECRET);
+    const userId = result.userId;
     const carData = await carService.getOne(carId);
     const carOwner = carData.owner._id;
 

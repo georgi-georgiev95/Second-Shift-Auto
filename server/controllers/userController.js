@@ -42,12 +42,12 @@ router.post('/logout', (req, res) => {
     }
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     const cookie = req.cookies['auth-cookie'];
 
     if (cookie) {
         try {
-            const user = userService.verifyUser(cookie);
+            const user = await userService.verifyUser(cookie);
             res.status(200).send(user);
         } catch (err) {
             res.clearCookie('auth-cookie');
