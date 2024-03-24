@@ -48,9 +48,9 @@ Happy Car Shopping! 🚙🎉
 ![Project Screenshot](./screenshots/details-guest.png)
 - Details page viewed as owner:
 ![Project Screenshot](./screenshots/details-owner.png)
-- Details page of a bought car viewed by the user who bought the car:
+- Details page of a sold car viewed by the user who bought the car:
 ![Project Screenshot](./screenshots/details-user-bought-buyer.png)
-- Details page of a bought car viewed by a user who is not the buyer of the car:
+- Details page of a sold car viewed by a user who is not the buyer of the car:
 ![Project Screenshot](./screenshots/details-user-bought-not-buyer.png)
 - Details page of a car for sale:
 ![Project Screenshot](./screenshots/details-user-not-bought.png)
