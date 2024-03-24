@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-mongoose.connect("mongodb://localhost:27017/cars-rest")
+mongoose.connect("mongodb://localhost:27017/second-shift-auto")
 .then(() => {
     console.log("Connected to MongoDB");
 })
