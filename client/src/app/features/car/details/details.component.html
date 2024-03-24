@@ -3,7 +3,7 @@
       <app-loader *ngIf="isLoading" class="loader"></app-loader>
       <ng-container *ngIf="!isLoading">
       <h1 class="page-title">{{carData?.make}} {{carData?.model}}</h1>   
-      <p class="price"><span class="price-tag">Price: {{carData?.price! | currencyFormater}}BGN</span></p>
+      <p class="price"><span class="price-tag" >Price: {{carData?.price! | currencyFormater}}BGN</span></p>
       <div class="demo">
           <div class="left">
               <img class="main-img" [src]="imageUrl">
@@ -31,14 +31,17 @@
                     </div>
                 </div>
                 <div class="btns" *ngIf="isLoggedIn">
-                    <ng-container *ngIf="isOwner">
-                        <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
-                        <button class="button-details" (click)="deleteCar(carData?._id)">Delete</button>
+                    <ng-container *ngIf="!isBought && !isBuyer">
+                        <ng-container *ngIf="isOwner">
+                            <button class="button-details" routerLink="/cars/details/{{carData?._id}}/edit">Edit</button>
+                            <button class="button-details" (click)="deleteCar(carData?._id)">Delete</button>
+                        </ng-container>
+                        <ng-container *ngIf="!isOwner">
+                            <button class="button-details" (click)="buyCar(carData?._id!)">Buy</button>
+                        </ng-container>
                     </ng-container>
-                    <ng-container *ngIf="!isOwner">
-                        <button class="button-details" (click)="buyCar(carData?._id!)">Buy</button>
-                    </ng-container>
-                    <ng-container *ngIf="isBought || isBuyer">Car already bought!</ng-container>
+                    <ng-container *ngIf="isBought && !isBuyer">Car already bought!</ng-container>
+                    <ng-container *ngIf="!isBought && isBuyer">You already bought this car!</ng-container>
               </div>
           </div>
       </div>

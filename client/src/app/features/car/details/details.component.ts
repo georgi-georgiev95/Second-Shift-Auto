@@ -47,13 +47,19 @@ export class DetailsComponent implements OnInit {
         this.carData.additionalImages.push({ url: this.carData?.image });
         this.imageUrl = this.carData?.image;
         this.isLoading = false;
+        const isOwner = this.isOwner;
         this.isBought = !!this.carData?.buyer;
-        if(this.isBought) {
+        if (this.isBought && !isOwner) {
           this.isBuyer = !!this.carData?.buyer?.includes(this.authenticationService.user?.userId!);
-          if(!this.isBuyer) {
+          if(this.isBuyer) {
             this.isBought = false;
           }
+        } else {
+          this.isBought = false;
         }
+        console.log('Owner?', isOwner)
+        console.log('Buyer?', this.isBuyer);
+        console.log('Just bought?', this.isBought);
       },
       error: (error) => {
         console.log(error);
