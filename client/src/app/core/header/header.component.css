@@ -11,12 +11,12 @@ div {
 
 div.left {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 div.right {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 ul {
