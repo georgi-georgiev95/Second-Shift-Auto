@@ -42,5 +42,22 @@ Open your browser and navigate to `http://localhost:4200`.
 Happy Car Shopping! 🚙🎉
 
 ## Screenshots
-
+- View of bought car vs car for sale on the catalog page:
 ![Project Screenshot](./screenshots/catalog-sold-vs-forsale.png)
+- Details page viewed as guest:
+![Project Screenshot](./screenshots/details-guest.png)
+- Details page viewed as owner:
+![Project Screenshot](./screenshots/details-owner.png)
+- Details page of a bought car viewed by the user who bought the car:
+![Project Screenshot](./screenshots/details-user-bought-buyer.png)
+- Details page of a bought car viewed by a user who is not the buyer of the car:
+![Project Screenshot](./screenshots/details-user-bought-not-buyer.png)
+- Details page of a car for sale:
+![Project Screenshot](./screenshots/details-user-not-bought.png)
+- Profile page of a user who hasn't bought anythign and has no listings:
+![Project Screenshot](./screenshots/profile-empty.png)
+- Profile page of a user who has listings and has bought cars:
+![Project Screenshot](./screenshots/profile-full.png)
+
+
+
