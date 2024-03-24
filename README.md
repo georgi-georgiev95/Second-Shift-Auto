@@ -1,16 +1,3 @@
-<!-- # Second Shift Auto
-Welcome to SecondShiftAuto, your go-to platform for buying and selling second-hand vehicles with ease.
-
-## Introduction
-SecondShiftAuto is a web application built using Angular, Express.js, and MongoDB. It offers a user-friendly interface for both buyers and sellers to connect in the thriving marketplace of pre-owned vehicles.
-
-## Features
-Login & Register: Join hundreds of users to sell or find your car faster.
-Browse Listings: Explore a wide range of available vehicles listed by sellers.
-Search and Filter: Easily find the vehicle you're looking for by applying various search filters.
-Edit and Delete: Take control of your listing anytime anywhere. -->
-
-
 # Second Shift Auto
 
 Welcome to Second Shift Auto! 🚗💨
@@ -54,3 +41,6 @@ Open your browser and navigate to `http://localhost:4200`.
 
 Happy Car Shopping! 🚙🎉
 
+## Screenshots
+
+![Project Screenshot](./screenshots/catalog-sold-vs-forsale.png)
