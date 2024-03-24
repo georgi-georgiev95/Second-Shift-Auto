@@ -48,7 +48,7 @@ This Angular application serves as a platform for listing and selling cars. It i
 - Ensure MongoDB is installed and running.
 - Navigate to the backend directory and run 'npm start'
 4. **Start the Application:**
-- Navigate to the client directory and run 'ng server' 
+- Navigate to the client directory and run 'ng serve' 
 5. **Access the Application:**
 Open your browser and navigate to `http://localhost:4200`.
 
