@@ -24,7 +24,6 @@
 
 img{
     width: 200px;
-    cursor: pointer;
 }
 
 h3 {
@@ -51,13 +50,15 @@ p{
 }
 
 .car-offer {
+  position: relative;
   width: 200px;
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-.car-offer img {
+.car-image {
+  cursor: pointer;
   width: 100%;
   height: auto;
   margin-bottom: 10px;
@@ -74,4 +75,13 @@ span.link {
 
 span.link:hover {
   text-decoration: underline;
+}
+
+.sold {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  opacity: 0.9;
 }

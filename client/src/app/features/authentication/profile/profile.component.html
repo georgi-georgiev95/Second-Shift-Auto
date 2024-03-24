@@ -18,7 +18,10 @@
         </ng-container>
       <div class="car-offers">
         <div *ngFor="let car of userCars" class="car-offer">
-          <img src="{{car.image}}" alt="Car 1" routerLink="/cars/details/{{car._id}}" />
+          <div class="title">
+            <img src="{{car.image}}" alt="Car 1" class="car-image" routerLink="/cars/details/{{car._id}}" />
+            <img *ngIf="car.buyer?.length! > 0" class="sold" src="/assets/sold.png" />
+          </div>
           <div class="details">
             <p><strong>Make:</strong> {{car.make}}</p>
             <p><strong>Model:</strong> {{car.model}}</p>
