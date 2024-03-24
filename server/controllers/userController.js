@@ -42,6 +42,22 @@ router.post('/logout', (req, res) => {
     }
 })
 
+
+router.get('/profile/boughtCars', async (req, res) => {
+    const cookie = req.cookies['auth-cookie'];
+    
+    if (cookie) {
+        try {
+            const user = await userService.verifyUser(cookie);
+            const userId = user.userId;
+            const boughtCars = (await userService.getUserCars(userId)).boughtCars;
+            res.status(200).send(boughtCars);
+        } catch (err) {
+            res.status(401).send({ error: err.message });
+        }
+    }
+})
+
 router.get('/profile', async (req, res) => {
     const cookie = req.cookies['auth-cookie'];
 
@@ -57,6 +73,6 @@ router.get('/profile', async (req, res) => {
         res.status(200).send(null);
     }
 
-})
+});
 
 module.exports = router;

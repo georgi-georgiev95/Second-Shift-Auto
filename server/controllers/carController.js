@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const carService = require("../services/carService");
+const userService = require("../services/userService");
 const {isAuth}= require('../middlewares/authMiddleware');
 
 router.get('/catalog', async (req, res) => {
@@ -73,6 +74,7 @@ router.post('/details/:carId/buy', async (req, res) => {
         const buyerId = req.body.buyerId;
         try {
             await carService.buyCar(carId, buyerId);
+            await userService.updateBoughtCars(buyerId, carId);
             res.json({ ok: true });
         } catch (err) {
             res.status(400).send({ error: err });

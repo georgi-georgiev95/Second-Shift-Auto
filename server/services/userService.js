@@ -44,6 +44,11 @@ exports.verifyUser = async (token) => {
     }
 }
 
+exports.updateBoughtCars = (userId, carId) => User.findByIdAndUpdate(userId, { $push: { boughtCars: carId } });
+
+exports.getUserCars = (userId) => {
+    return User.findById(userId).populate('boughtCars').select('boughtCars -_id');
+}
 
 function generateToken(user) {
 
