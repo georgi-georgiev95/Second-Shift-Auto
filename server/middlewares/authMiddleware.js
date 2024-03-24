@@ -70,9 +70,5 @@ exports.isAuth = async (req, res, next) => {
         return next(error);
     }
 
-    if (req.url == 'cars/details/:carId/buy') {
-        console.log('here');
-    }
-
     next();
 }

@@ -151,7 +151,7 @@ span.price-tag {
   touch-action: manipulation;
 }
 
-.button-details:hover {
+.button-details:hover:not(:disabled) {
   box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
   opacity: 0.85;
 }
@@ -162,6 +162,10 @@ span.price-tag {
 
 .button-details:focus {
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 3px;
+}
+
+.button-details:disabled {
+  cursor: not-allowed;
 }
 
 @media (max-width: 420px) {

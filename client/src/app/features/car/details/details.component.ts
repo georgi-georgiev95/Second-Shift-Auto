@@ -54,9 +54,7 @@ export class DetailsComponent implements OnInit {
           if(this.isBuyer) {
             this.isBought = false;
           }
-        } else {
-          this.isBought = false;
-        }
+        } 
         console.log('Owner?', isOwner)
         console.log('Buyer?', this.isBuyer);
         console.log('Just bought?', this.isBought);
