@@ -21,6 +21,10 @@ export class CarApiService {
     return this.http.get<Car[]>(`/api/cars/user/${userId}`);
   }
 
+  getBoughtCars(userId: string) {
+    return this.http.get<Car[]>(`/api/users/profile/boughtCars`);
+  }
+
   createCar(carObj: Car, owner: string) {
     return this.http
       .post<Car>('/api/cars/create', { carObj, owner })
@@ -55,4 +59,5 @@ export class CarApiService {
       .post<Car>(`/api/cars/details/${carId}/buy`, { buyerId })
       .pipe(tap((data) => console.log(data)));
   }
+
 }

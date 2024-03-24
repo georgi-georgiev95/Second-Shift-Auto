@@ -12,8 +12,12 @@
         <p>{{ userData.email }}</p>
       </div>
       <div class="flex">
-        <p [style]="{ fontWeight: 'bold' }">Total Income:</p>
+        <p [style]="{ fontWeight: 'bold' }">Total profit:</p>
         <p>{{ totalProfit | currencyFormater }}BGN</p>
+      </div>
+      <div class="flex">
+        <p [style]="{ fontWeight: 'bold' }">Total money spent:</p>
+        <p>{{ totalSpent | currencyFormater }}BGN</p>
       </div>
       <h3>Car Offers:</h3>
       <div class="offers-section">
@@ -34,7 +38,26 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <h3>Bought Cars:</h3>
+      <div class="offers-section">
+        <ng-container *ngIf="boughtCars.length == 0">
+          <h2>You dont own any cars yet. <span class="link" routerLink="/cars/catalog">Buy now?</span></h2>
+        </ng-container>
+      <div class="car-offers">
+        <div *ngFor="let car of boughtCars" class="car-offer">
+          <div class="title">
+            <img src="{{car.image}}" alt="Car 1" class="car-image" routerLink="/cars/details/{{car._id}}" />
+          </div>
+          <div class="details">
+            <p><strong>Make:</strong> {{car.make}}</p>
+            <p><strong>Model:</strong> {{car.model}}</p>
+            <p><strong>Year:</strong> {{car.year}}</p>
+            <p><strong>Price:</strong> {{car.price | currencyFormater}}</p>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>

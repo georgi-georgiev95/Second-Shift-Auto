@@ -11,17 +11,19 @@ import { Car } from 'src/app/types/car.interface';
 })
 export class ProfileComponent implements OnInit {
   totalProfit = 0;
+  totalSpent = 0;
   userData: Profile = {
     username: '',
     email: '',
     userId: '',
   };
   userCars: Car[] = [];
+  boughtCars: Car[] = [];
 
   constructor(private authenticationService: AuthenticationService, private carApiService: CarApiService) { }
   
   ngOnInit(): void {
-    const userCars = this.carApiService.getUserCars(this.authenticationService.user?.userId!).subscribe(data => {
+    this.carApiService.getUserCars(this.authenticationService.user?.userId!).subscribe(data => {
       this.userCars = data;
       data.forEach((car) => {
         if(car.buyer?.length! > 0) {
@@ -29,6 +31,13 @@ export class ProfileComponent implements OnInit {
         }
       })
     });
+
+    this.carApiService.getBoughtCars(this.authenticationService.user?.userId!).subscribe(data => {
+      this.boughtCars = data;
+      data.forEach((car) => {
+        this.totalSpent += Number(car.price);
+      })
+    })
 
     this.userData = {
       username: this.authenticationService.user?.username || '',
