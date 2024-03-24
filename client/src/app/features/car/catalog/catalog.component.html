@@ -16,6 +16,7 @@
     <div class="demo" *ngFor="let car of allCars">
       <div class="left">
         <img src="{{ car.image }}" />
+        <img *ngIf="car.buyer?.length! > 0" class="sold" src="/assets/sold.png" />
       </div>
       <div class="right">
         <h1>{{ car.make }} {{ car.model }}</h1>
