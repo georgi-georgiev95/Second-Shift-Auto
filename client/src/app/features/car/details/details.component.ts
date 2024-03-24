@@ -28,7 +28,6 @@ export class DetailsComponent implements OnInit {
   }
 
   get isOwner(): boolean {
-    console.log(this.carData?.owner, this.authenticationService.user?.userId);
     if (this.carData?.owner === this.authenticationService.user?.userId) {
       return true;
     }
@@ -55,12 +54,12 @@ export class DetailsComponent implements OnInit {
             this.authenticationService.user?.userId!
           );
           if (this.isBuyer) {
-            this.isBought = false;
+            this.isBought = true;
           }
         } 
-        console.log('Owner?', isOwner);
-        console.log('Buyer?', this.isBuyer);
-        console.log('Just bought?', this.isBought);
+        console.log('isOwner', isOwner);
+        console.log('isBuyer', this.isBuyer);
+        console.log('isBought', this.isBought);
       },
       error: (error) => {
         console.log(error);
