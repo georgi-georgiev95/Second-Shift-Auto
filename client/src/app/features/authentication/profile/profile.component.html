@@ -11,6 +11,10 @@
         <p [style]="{ fontWeight: 'bold' }">Email:</p>
         <p>{{ userData.email }}</p>
       </div>
+      <div class="flex">
+        <p [style]="{ fontWeight: 'bold' }">Total Income:</p>
+        <p>{{ totalProfit | currencyFormater }}BGN</p>
+      </div>
       <h3>Car Offers:</h3>
       <div class="offers-section">
         <ng-container *ngIf="userCars.length == 0">
@@ -29,7 +33,6 @@
             <p><strong>Price:</strong> {{car.price | currencyFormater}}</p>
           </div>
         </div>
-        <!-- Dummy -->
       </div>
     </div>
     </div>

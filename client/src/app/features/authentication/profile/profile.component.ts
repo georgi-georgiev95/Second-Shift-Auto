@@ -10,6 +10,7 @@ import { Car } from 'src/app/types/car.interface';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  totalProfit = 0;
   userData: Profile = {
     username: '',
     email: '',
@@ -22,6 +23,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const userCars = this.carApiService.getUserCars(this.authenticationService.user?.userId!).subscribe(data => {
       this.userCars = data;
+      data.forEach((car) => {
+        if(car.buyer?.length! > 0) {
+          this.totalProfit += Number(car.price);
+        }
+      })
     });
 
     this.userData = {
