@@ -28,6 +28,7 @@ export class DetailsComponent implements OnInit {
   }
 
   get isOwner(): boolean {
+    console.log(this.carData?.owner, this.authenticationService.user?.userId);
     if (this.carData?.owner === this.authenticationService.user?.userId) {
       return true;
     }
@@ -48,7 +49,7 @@ export class DetailsComponent implements OnInit {
         this.imageUrl = this.carData?.image;
         this.isLoading = false;
         const isOwner = this.isOwner;
-        this.isBought = !!this.carData?.buyer;
+        this.isBought = this.carData?.buyer?.length! > 0;
         if (this.isBought && !isOwner) {
           this.isBuyer = !!this.carData?.buyer?.includes(
             this.authenticationService.user?.userId!
@@ -56,7 +57,7 @@ export class DetailsComponent implements OnInit {
           if (this.isBuyer) {
             this.isBought = false;
           }
-        }
+        } 
         console.log('Owner?', isOwner);
         console.log('Buyer?', this.isBuyer);
         console.log('Just bought?', this.isBought);
