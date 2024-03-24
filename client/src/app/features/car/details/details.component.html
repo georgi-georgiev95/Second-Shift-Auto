@@ -10,6 +10,8 @@
               <div class="thumbnail">
                 <img *ngFor="let img of carData?.additionalImages" (click)="changeImage(img.url)" src="{{img.url}}">          
               </div>
+              <button class="arrow left-arrow" (click)="navigateImage(-1)">&#10094;</button>
+              <button class="arrow right-arrow" (click)="navigateImage(1)">&#10095;</button>
           </div>
           <div class="right">
               <div class="car-data">

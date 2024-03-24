@@ -50,20 +50,22 @@ export class DetailsComponent implements OnInit {
         const isOwner = this.isOwner;
         this.isBought = !!this.carData?.buyer;
         if (this.isBought && !isOwner) {
-          this.isBuyer = !!this.carData?.buyer?.includes(this.authenticationService.user?.userId!);
-          if(this.isBuyer) {
+          this.isBuyer = !!this.carData?.buyer?.includes(
+            this.authenticationService.user?.userId!
+          );
+          if (this.isBuyer) {
             this.isBought = false;
           }
-        } 
-        console.log('Owner?', isOwner)
+        }
+        console.log('Owner?', isOwner);
         console.log('Buyer?', this.isBuyer);
         console.log('Just bought?', this.isBought);
       },
       error: (error) => {
         console.log(error);
         this.isLoading = false;
-      }
-    })
+      },
+    });
   }
 
   changeImage(url: string) {
@@ -83,6 +85,21 @@ export class DetailsComponent implements OnInit {
       });
     } else {
       this.route.navigate(['/login']);
+    }
+  }
+
+  navigateImage(direction: number) {
+    const currentIndex = this.carData?.additionalImages.findIndex(
+      (img) => img.url === this.imageUrl
+    );
+    if (currentIndex !== undefined && currentIndex !== null) {
+      const nextIndex = currentIndex + direction;
+      if (nextIndex >= 0 && nextIndex < this.carData?.additionalImages.length!) {
+        this.imageUrl = this.carData?.additionalImages[nextIndex].url;
+      } else {
+        const wrapIndex = nextIndex < 0 ? this.carData?.additionalImages.length! - 1 : 0;
+        this.imageUrl = this.carData?.additionalImages[wrapIndex].url;
+      }
     }
   }
 }
