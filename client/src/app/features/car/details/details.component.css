@@ -54,23 +54,26 @@
 .car-data {
   display: flex;
   justify-content: space-around;
-  height: 85%;
+  height: 35%;
 }
 
-.left-data p {
+.description {
+  height: 50%;
+  text-align: justify;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.left-data p, .right-data p {
   text-align: start;
   margin-top: 0px;
 }
 
-.left-data {
+.left-data, .right-data {
   margin-left: 40px;
   width: 40%;
 }
 
-.right-data {
-  width: 60%;
-  margin-right: 20px;
-}
 
 p.price {
   display: flex;
@@ -95,11 +98,6 @@ span {
 
 span.price-tag {
   font-size: 30px;
-  text-align: center;
-}
-
-.right-data p {
-  margin: 0;
   text-align: center;
 }
 

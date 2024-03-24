@@ -21,16 +21,17 @@
                       <p><span>Year:</span> {{carData?.year}}</p>
                       <p><span>Engine Type:</span> {{carData?.engineType}}</p>
                       <p><span>Power:</span> {{carData?.power}}</p>
+                  </div>
+                  <div class="left-data">
                       <p><span>Gearbox:</span> {{carData?.gearbox}}</p>
                       <p><span>Category:</span> {{carData?.category}}</p>
                       <p><span>Mileage:</span> {{carData?.mileage}}km</p>
                       <p><span>Color:</span> {{carData?.color}}</p>
                       <p><span>Location:</span> {{carData?.location}}</p>
-                  </div>
-                  <div class="right-data">
-                      <!-- <p><span class="price-tag">Price: {{carData?.price}}BGN</span></p> -->
-                      <p><span>Description:</span> {{carData?.description}}</p>
                     </div>
+                </div>
+                <div class="description">
+                    <p><span>Description:</span> {{carData?.description}}</p>
                 </div>
                 <div class="btns" *ngIf="isLoggedIn">
                     <!-- <ng-container *ngIf="!isBought && !isBuyer"> -->
