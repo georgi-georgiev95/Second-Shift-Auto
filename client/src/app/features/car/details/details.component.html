@@ -39,7 +39,7 @@
                             <button class="button-details" [disabled]="isBought" [routerLink]="isBought ? null : '/cars/details/' + carData?._id + '/edit'">Edit</button>
                             <button class="button-details" (click)="deleteCar(carData?._id)">Delete</button>
                         </ng-container>
-                        <ng-container *ngIf="!isBought">
+                        <ng-container *ngIf="!isBought && !isOwner">
                             <button class="button-details" (click)="buyCar(carData?._id!)">Buy</button>
                         </ng-container>
                     <!-- </ng-container> -->
