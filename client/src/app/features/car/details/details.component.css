@@ -181,3 +181,9 @@ span.price-tag {
 .left-data, .right-data p {
   margin-top: 30px;
 }
+
+p.bought {
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}

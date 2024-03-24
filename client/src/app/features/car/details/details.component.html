@@ -40,8 +40,8 @@
                             <button class="button-details" (click)="buyCar(carData?._id!)">Buy</button>
                         </ng-container>
                     </ng-container>
-                    <ng-container *ngIf="isBought && !isBuyer">Car already bought!</ng-container>
-                    <ng-container *ngIf="!isBought && isBuyer">You already bought this car!</ng-container>
+                    <ng-container *ngIf="isBought && !isBuyer"><p class="bought">Car already bought!</p></ng-container>
+                    <ng-container *ngIf="!isBought && isBuyer"><p class="bought">You already bought this car!</p></ng-container>
               </div>
           </div>
       </div>
