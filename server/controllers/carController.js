@@ -96,7 +96,10 @@ router.get('/search', async (req, res) => {
     const year = Number(req.query.year);
     const maxPrice = Number(req.query.maxPrice);
     const minPrice = Number(req.query.minPrice);
-
+    const city = req.query.city;
+    const showAll = req.query.showAll;
+    const showBought = req.query.showBought;
+    const showNonBought = req.query.showNonBought;
     try {
         let query = {};
         if (make) {
@@ -111,6 +114,9 @@ router.get('/search', async (req, res) => {
             query.price = { $gte: Number(minPrice) };
         } else if (maxPrice) {
             query.price = { $lte: Number(maxPrice) };
+        }
+        if (city) {
+            query.location = new RegExp(`^${city}$`, 'i');
         }
         const data = await carService.search(query);
         res.json(data);

@@ -47,10 +47,11 @@ export class CarApiService {
     make: string,
     year: string,
     maxPrice: string,
-    minPrice: string
+    minPrice: string,
+    city: string,
   ) {
     return this.http.get<Car[]>('/api/cars/search', {
-      params: { make, year, maxPrice, minPrice },
+      params: { make, year, maxPrice, minPrice, city},
     });
   }
 

@@ -5,10 +5,11 @@
       <form [formGroup]="searchForm" (ngSubmit)="filterCars()">
         <input type="text" formControlName="make" placeholder="Enter make" />
         <input type="text" formControlName="year" placeholder="Enter year" />
+        <input type="text" formControlName="city" placeholder="Enter city" />
         <input type="text" formControlName="minPrice" placeholder="Enter min price"/>
         <input type="text" formControlName="maxPrice" placeholder="Enter max price"/>
-        <button type="submit">Search</button>
       </form>
+      <p>Results: {{ allCars.length }}</p>
     </div>
     <app-loader *ngIf="isLoading" class="loader"></app-loader>
     <ng-container *ngIf="!isLoading">
