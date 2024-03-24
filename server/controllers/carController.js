@@ -37,7 +37,6 @@ router.post('/details/:carId/edit', isAuth, async (req, res) => {
     const car = req.body.carObj;
     car.owner = req.body.owner;
     const carId = req.params.carId;
-    console.log(car);
 
     try {
         await carService.update(carId, car);

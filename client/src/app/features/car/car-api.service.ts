@@ -27,20 +27,17 @@ export class CarApiService {
 
   createCar(carObj: Car, owner: string) {
     return this.http
-      .post<Car>('/api/cars/create', { carObj, owner })
-      .pipe(tap((data) => console.log(data)));
+      .post<Car>('/api/cars/create', { carObj, owner });
   }
 
   updateCar(carObj: Car, owner: string, carId: string) {
     return this.http
-      .post<Car>(`/api/cars/details/${carId}/edit`, { carObj, owner })
-      .pipe(tap((data) => console.log(data)));
+      .post<Car>(`/api/cars/details/${carId}/edit`, { carObj, owner });
   }
 
   deleteCar(carId: string | undefined) {
     return this.http
-      .delete<Car>(`/api/cars/details/${carId}/delete`)
-      .pipe(tap((data) => console.log(data)));
+      .delete<Car>(`/api/cars/details/${carId}/delete`);
   }
 
   getSearchedCars(
@@ -57,8 +54,7 @@ export class CarApiService {
 
   buyCar(carId: string, buyerId: string) {
     return this.http
-      .post<Car>(`/api/cars/details/${carId}/buy`, { buyerId })
-      .pipe(tap((data) => console.log(data)));
+      .post<Car>(`/api/cars/details/${carId}/buy`, { buyerId });
   }
 
 }

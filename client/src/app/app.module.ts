@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { FeaturesModule } from './features/features.module';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticationService } from './features/authentication/authentication.service';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [

@@ -50,7 +50,6 @@ export class CatalogComponent implements OnInit {
   }
 
   filterCars() {
-    console.log(this.searchForm.value.showAll);
     return this.carApiService
       .getSearchedCars(
         this.searchForm.value.make,

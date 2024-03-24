@@ -58,19 +58,14 @@ export class AddCarComponent {
   onSubmit() {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
-      console.log(this.authenticationService.user);
       const carObj = this.carForm.value as unknown as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
           alert(data.error);
           return;
         }
-        console.log(data);
         this.router.navigate(['/cars/catalog']);
       });
-    } else {
-      // Form is invalid, display error messages
-      console.log('Form is invalid!');
-    }
+    } 
   }
 }

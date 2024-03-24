@@ -111,12 +111,8 @@ export class EditComponent implements OnInit {
           alert(data.error);
           return;
         }
-        console.log(data);
         this.router.navigate([`/cars/details/${this.carId}`]);
       });
-    } else {
-      // Form is invalid, display error messages
-      console.log('Form is invalid!');
-    }
+    } 
   }
 }

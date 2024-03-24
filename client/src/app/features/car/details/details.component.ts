@@ -57,12 +57,8 @@ export class DetailsComponent implements OnInit {
             this.isBought = true;
           }
         } 
-        console.log('isOwner', isOwner);
-        console.log('isBuyer', this.isBuyer);
-        console.log('isBought', this.isBought);
       },
       error: (error) => {
-        console.log(error);
         this.isLoading = false;
       },
     });
