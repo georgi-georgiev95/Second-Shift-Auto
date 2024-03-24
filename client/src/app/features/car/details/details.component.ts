@@ -81,7 +81,7 @@ export class DetailsComponent implements OnInit {
     const userId = this.authenticationService.user?.userId;
     if (userId) {
       this.carApiService.buyCar(carId, userId).subscribe(() => {
-        this.route.navigate([`/cars/details/${carId}`]);
+        this.route.navigate([`/cars/catalog`]);
       });
     } else {
       this.route.navigate(['/login']);

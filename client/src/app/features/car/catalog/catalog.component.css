@@ -234,7 +234,7 @@ span.price-tag{
   position: absolute;
   top: 0;
   left: 1%;
-  width: 10px;
-  height: 10px;
+  width: 200px;
+  height: 200px;
   opacity: 0.9;
 }
