@@ -28,14 +28,14 @@ export class AuthActivate implements CanActivate {
         this.router.navigate(['/users/login']);
         return false;
       }
-      return true; //can proceed
+      return true;
     } else {
       if (route.url[0].path === 'profile' ||
       route.url[0].path === 'sell') {
         return true;
       }
       this.router.navigate(['/404']);
-      return false; //cannot proceed
+      return false;
     }
   }
 }

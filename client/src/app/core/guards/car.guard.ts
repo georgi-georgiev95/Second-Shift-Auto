@@ -32,7 +32,7 @@ export class CarActionsActivate implements CanActivate {
       return false;
     } else {
       const carId = route.params['carId'];
-      const car = this.carApiService.getCar(carId).subscribe(data => {
+      this.carApiService.getCar(carId).subscribe(data => {
         this.carOwner = data.owner;
         const userId = this.authenticationService.user?.userId;
         if(this.carOwner !== userId) {
