@@ -12,7 +12,7 @@ import { CarApiService } from 'src/app/features/car/car-api.service';
 
 @Injectable({ providedIn: 'root' })
 export class CarActionsActivate implements CanActivate {
-  carOwner = '' as any;
+  carOwner: string | undefined;
   constructor(
     private authenticationService: AuthenticationService,
     private carApiService: CarApiService,
