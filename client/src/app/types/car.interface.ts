@@ -1,21 +1,21 @@
 enum EngineType {
-  Petrol,
-  Diesel,
-  Electric,
-  Hybrid,
+  Petrol = "Petrol",
+  Diesel = "Diesel",
+  Electric = "Electric",
+  Hyybrid = "Hybrid",
 }
 
 enum GearBox {
-  Manual,
-  Automatic,
+  Manual = "Manual",
+  Automatic = "Automatic",
 }
 
 enum Category {
-  Hatchback,
-  Sedan,
-  SUV,
-  Wagon,
-  Coupe,
+  Hatchback = "Hatchback",
+  Sedan = "Sedan",
+  SUV = "SUV",
+  Wagon = "Wagon",
+  Coupe = "Coupe",
 }
 
 interface additionalImages {
@@ -26,13 +26,13 @@ export interface Car {
   _id?: string;
   make: string;
   model: string;
-  price: number;
-  year: number;
+  price: string;
+  year: string;
   engineType: EngineType;
-  power: number;
-  gearbox: GearBox;
+  power: string;
+  gearbox: GearBox; 
   category: Category;
-  mileage: number;
+  mileage: string;
   color: string;
   description: string;
   image: string;
