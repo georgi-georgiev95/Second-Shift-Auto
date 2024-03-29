@@ -22,6 +22,8 @@
           {{registerForm.get('username')?.errors?.['minlength'].requiredLength}}
           characters!
         </p>
+        <p class="error" *ngIf="registerForm.get('username')?.errors?.['pattern']">
+          Username should contain only english letters and digits!</p>
       </ng-container>
 
       <div class="row">
