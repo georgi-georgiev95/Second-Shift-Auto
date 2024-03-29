@@ -58,7 +58,7 @@ export class AddCarComponent {
   onSubmit() {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
-      const carObj = this.carForm.value as unknown as Car;
+      const carObj = this.carForm.value as Car;
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
           alert(data.error);
@@ -68,4 +68,5 @@ export class AddCarComponent {
       });
     } 
   }
+
 }
