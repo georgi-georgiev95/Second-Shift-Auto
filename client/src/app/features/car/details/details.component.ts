@@ -20,7 +20,7 @@ export class DetailsComponent implements OnInit {
     private carApiService: CarApiService,
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    private route: Router
+    private router: Router
   ) {}
 
   get isLoggedIn(): boolean {
@@ -36,7 +36,7 @@ export class DetailsComponent implements OnInit {
 
   deleteCar(carId: string | undefined) {
     this.carApiService.deleteCar(carId).subscribe(() => {
-      this.route.navigate(['/cars/catalog']);
+      this.router.navigate(['/cars/catalog']);
     });
   }
 
@@ -60,6 +60,7 @@ export class DetailsComponent implements OnInit {
       },
       error: (error) => {
         this.isLoading = false;
+        this.router.navigate(['/404']);
       },
     });
   }
@@ -77,10 +78,10 @@ export class DetailsComponent implements OnInit {
     const userId = this.authenticationService.user?.userId;
     if (userId) {
       this.carApiService.buyCar(carId, userId).subscribe(() => {
-        this.route.navigate([`/cars/catalog`]);
+        this.router.navigate([`/cars/catalog`]);
       });
     } else {
-      this.route.navigate(['/login']);
+      this.router.navigate(['/login']);
     }
   }
 
