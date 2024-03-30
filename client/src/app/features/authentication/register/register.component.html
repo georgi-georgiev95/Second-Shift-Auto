@@ -25,6 +25,8 @@
         </p>
         <p class="error" *ngIf="registerForm.get('username')?.errors?.['pattern']">
           Username should contain only english letters and digits!</p>
+          <p class="error" *ngIf="registerForm.get('username')?.errors?.['pattern']">
+          White spaces are forbidden.</p>
       </ng-container>
 
       <div class="row">
