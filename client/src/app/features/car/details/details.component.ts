@@ -15,6 +15,8 @@ export class DetailsComponent implements OnInit {
   isLoading = true;
   carData: Car | undefined;
   imageUrl: string | undefined;
+  isZoomed = false;
+  selectedImage: string | undefined;
 
   constructor(
     private carApiService: CarApiService,
@@ -56,7 +58,7 @@ export class DetailsComponent implements OnInit {
           if (this.isBuyer) {
             this.isBought = true;
           }
-        } 
+        }
       },
       error: (error) => {
         this.isLoading = false;
@@ -91,12 +93,29 @@ export class DetailsComponent implements OnInit {
     );
     if (currentIndex !== undefined && currentIndex !== null) {
       const nextIndex = currentIndex + direction;
-      if (nextIndex >= 0 && nextIndex < this.carData?.additionalImages.length!) {
+      if (
+        nextIndex >= 0 &&
+        nextIndex < this.carData?.additionalImages.length!
+      ) {
         this.imageUrl = this.carData?.additionalImages[nextIndex].url;
+        this.selectedImage = this.imageUrl;
       } else {
-        const wrapIndex = nextIndex < 0 ? this.carData?.additionalImages.length! - 1 : 0;
+        const wrapIndex =
+          nextIndex < 0 ? this.carData?.additionalImages.length! - 1 : 0;
         this.imageUrl = this.carData?.additionalImages[wrapIndex].url;
+        this.selectedImage = this.imageUrl;
       }
     }
+  }
+
+  zoomPhoto(photoCover: HTMLImageElement) {
+    this.isZoomed = !this.isZoomed;
+    if (this.isZoomed) {
+      this.selectedImage = photoCover.src;
+    }
+  }
+
+  closeZoom() {
+    this.isZoomed = false;
   }
 }

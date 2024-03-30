@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [class.blur]="isZoomed ? true : false">
     <div class="content">
       <app-loader *ngIf="isLoading" class="loader"></app-loader>
       <ng-container *ngIf="!isLoading">
@@ -6,9 +6,9 @@
       <p class="price"><span class="price-tag" >Price: {{carData?.price! | currencyFormater}}BGN</span></p>
       <div class="demo">
           <div class="left">
-              <img class="main-img" [src]="imageUrl">
+              <img class="main-img" [src]="imageUrl" #photoCover (click)="zoomPhoto(photoCover)">
               <div class="thumbnail">
-                <img *ngFor="let img of carData?.additionalImages" (click)="changeImage(img.url)" src="{{img.url}}">          
+                <img #photoCover (click)="zoomPhoto(photoCover)" *ngFor="let img of carData?.additionalImages" (click)="changeImage(img.url)" src="{{img.url}}">          
               </div>
               <button class="arrow left-arrow" (click)="navigateImage(-1)">&#10094;</button>
               <button class="arrow right-arrow" (click)="navigateImage(1)">&#10095;</button>
@@ -51,4 +51,10 @@
       </ng-container>
     </div>
   </div>
+<ng-container *ngIf="isZoomed">
+    <button class="close" (click)="closeZoom()">Close</button>
+    <img #photoCover (click)="zoomPhoto(photoCover)" class="main-img" [src]="selectedImage" class="overlay">
+    <button class="arrow-zoom left-arrow-zoom" (click)="navigateImage(-1)">&#10094;</button>
+    <button class="arrow-zoom right-arrow-zoom" (click)="navigateImage(1)">&#10095;</button>
+</ng-container>
 
