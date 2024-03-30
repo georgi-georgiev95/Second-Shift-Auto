@@ -41,4 +41,9 @@ export interface Car {
   owner?: string;
   buyer?: string[];
   error?: string;
+  [key: string]: any;
+}
+
+export interface PhotoUrl {
+  url: string;
 }
