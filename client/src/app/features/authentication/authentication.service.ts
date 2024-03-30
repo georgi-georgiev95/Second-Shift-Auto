@@ -2,6 +2,7 @@ import { Injectable, OnDestroy, resolveForwardRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthRes, UserLogin, UserReg } from 'src/app/types/user.interface';
 import { BehaviorSubject, tap } from 'rxjs';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,10 @@ export class AuthenticationService{
 
   private handleResponse(res: AuthRes | undefined) {
     if (res?.error) {
-      window.alert(res.error);
+      const error = {
+        error: res.error
+      }
+      this.errorService.getError(error);
     } else {
       this.userSbj$$.next(res);
     }
@@ -25,7 +29,7 @@ export class AuthenticationService{
     return !!this.user;
   }
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errorService: ErrorService) {
     this.userObs$.subscribe((user) => {
       this.user = user;
     })
