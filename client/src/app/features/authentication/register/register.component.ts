@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  error: string | undefined;
   registerForm = this.fb.group({
     username: [
       '',
@@ -52,7 +53,12 @@ export class RegisterComponent {
       .register(formData as UserReg)
       .subscribe((data) => {
         if (data?.error) {
-          this.registerForm.reset();
+          this.registerForm.patchValue({
+            passGroup: {
+              password: '',
+              rePassword: '',
+            },
+          })
           return;
         }
         this.router.navigate(['/home']);

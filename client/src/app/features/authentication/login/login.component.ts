@@ -27,7 +27,9 @@ export class LoginComponent {
       .login(formData as UserLogin)
       .subscribe((data) => {
         if (data?.error) {
-          this.loginForm.reset();
+          this.loginForm.patchValue({
+            password: '',
+          })
           return;
         }
         this.router.navigate(['/home']);
