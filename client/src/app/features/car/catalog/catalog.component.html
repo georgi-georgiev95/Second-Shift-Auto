@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [class.blur]="isZoomed ? true : false">
   <div class="content">
     <h1 class="page-title">Catalog</h1>
     <div class="search">
@@ -16,7 +16,7 @@
     <div class="not-found" *ngIf="!result">No cars found.</div>
     <div class="demo" *ngFor="let car of allCars">
       <div class="left">
-        <img src="{{ car.image }}" />
+        <img #photoCover (click)="zoomPhoto(photoCover)" src="{{ car.image }}" />
         <img *ngIf="car.buyer?.length! > 0" class="sold" src="/assets/sold.png" />
       </div>
       <div class="right">
@@ -44,5 +44,8 @@
       </div>
     </div>
   </ng-container>
-  </div>
 </div>
+</div>
+<ng-container *ngIf="isZoomed">
+  <img #photoCover src="{{selectedImage}}" (click)="zoomPhoto(photoCover)" class="overlay"/>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CarApiService } from '../car-api.service';
 import { Car } from 'src/app/types/car.interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,7 +10,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./catalog.component.css'],
 })
 export class CatalogComponent implements OnInit {
+  selectedImage = '';
   isLoading = true;
+  isZoomed = false;
   allCars: Car[] = [];
   result: boolean = false;
   formChangesSubscription: Subscription | undefined;
@@ -22,9 +24,19 @@ export class CatalogComponent implements OnInit {
     city: [''],
   });
 
-
-  constructor(private carApiService: CarApiService, private fb: FormBuilder) {
+  constructor(
+    private carApiService: CarApiService,
+    private fb: FormBuilder,
+    private renderer: Renderer2
+  ) {
     this.result = true;
+  }
+
+  zoomPhoto(photoCover: HTMLImageElement) {
+    this.isZoomed = !this.isZoomed;
+    if (this.isZoomed) {
+      this.selectedImage = photoCover.src;
+    } 
   }
 
   ngOnInit(): void {
@@ -42,7 +54,7 @@ export class CatalogComponent implements OnInit {
       () => {
         this.filterCars();
       }
-    )
+    );
   }
 
   getAllCars() {
@@ -56,7 +68,7 @@ export class CatalogComponent implements OnInit {
         this.searchForm.value.year,
         this.searchForm.value.maxPrice,
         this.searchForm.value.minPrice,
-        this.searchForm.value.city,
+        this.searchForm.value.city
       )
       .subscribe((data) => {
         this.allCars = data;
