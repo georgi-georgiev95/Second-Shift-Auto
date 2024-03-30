@@ -80,7 +80,7 @@ p.price {
   padding-top: 0px;
   padding-bottom: 80px;
   max-width: 1200px;
-  justify-content: end;
+  justify-content: flex-end;
   margin: 0 auto;
 }
 
