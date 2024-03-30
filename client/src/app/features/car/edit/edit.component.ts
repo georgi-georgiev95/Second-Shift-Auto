@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { CarApiService } from '../car-api.service';
 import { Car } from 'src/app/types/car.interface';
 import { AuthenticationService } from '../../authentication/authentication.service';
+import { sanitizeInput } from '../sanitize-input';
 
 @Component({
   selector: 'edit-car',
@@ -106,6 +107,7 @@ export class EditComponent implements OnInit {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
       const carObj = this.carForm.value as Car;
+      sanitizeInput(carObj);
       this.carApiService.updateCar(carObj, owner, this.carId).subscribe((data) => {
         if (data.error) {
           alert(data.error);

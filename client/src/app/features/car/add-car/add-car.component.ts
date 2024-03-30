@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { CarApiService } from '../car-api.service';
 import { Router } from '@angular/router';
-import { Car } from 'src/app/types/car.interface';
+import { Car, PhotoUrl } from 'src/app/types/car.interface';
 import { AuthenticationService } from '../../authentication/authentication.service';
+import { sanitizeInput } from '../sanitize-input';
 
 @Component({
   selector: 'app-add-car',
@@ -59,6 +60,7 @@ export class AddCarComponent {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
       const carObj = this.carForm.value as Car;
+      sanitizeInput(carObj);      
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
           alert(data.error);
