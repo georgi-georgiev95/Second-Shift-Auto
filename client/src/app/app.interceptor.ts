@@ -23,6 +23,7 @@ export class AppInterceptor implements HttpInterceptor {
           tap((req) => {
           }),
           catchError((err) => {
+            console.log(err);
             if (err.status === 401) {
               console.error('You are not authorized');
               this.router.navigate(['/users/login']);
@@ -35,6 +36,7 @@ export class AppInterceptor implements HttpInterceptor {
               return EMPTY;
             }
 
+            this.router.navigate(['/404']);
             return [err];
           })
         );
