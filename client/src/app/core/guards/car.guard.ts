@@ -39,6 +39,10 @@ export class CarActionsActivate implements CanActivate {
           this.router.navigate(['/404']);
           return false;
         }
+        if(data.buyer?.length! > 0) {
+          this.router.navigate(['/404']);
+          return false;
+        }
         return true;
       });
       return true;
