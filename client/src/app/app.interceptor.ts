@@ -23,21 +23,16 @@ export class AppInterceptor implements HttpInterceptor {
           tap((req) => {
           }),
           catchError((err) => {
-            console.log(err);
             if (err.status === 401) {
               console.error('You are not authorized');
               this.router.navigate(['/users/login']);
               return EMPTY;
             }
 
-            if(err.status === 404) {
-              console.error('Not found');
-              this.router.navigate(['/404']);
-              return EMPTY;
-            }
-
+            console.error('Not found');
             this.router.navigate(['/404']);
-            return [err];
+            return EMPTY;
+            
           })
         );
     }
