@@ -3,253 +3,316 @@
     <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="car-form">
       <h1>Car details:</h1>
       <div class="columns">
-      <div class="left">
-        <div class="form-group">
-          <label for="make">Make:</label>
-          <input
-            type="text"
-            id="make"
-            formControlName="make"
-            placeholder="Enter make"
-          />
-          <div
-            *ngIf="carForm.get('make')?.invalid && carForm.get('make')?.touched"
-            class="error"
-          >
-            Make is required
+        <div class="left">
+          <div class="form-group">
+            <label for="make">Make:</label>
+            <input
+              type="text"
+              id="make"
+              formControlName="make"
+              placeholder="Enter make"
+            />
+            <ng-container *ngIf="carForm.get('make')?.touched">
+              <div
+                *ngIf="
+                  carForm.get('make')?.errors?.['required']"
+                class="error"
+              >
+                Make is required
+              </div>
+              <div
+                *ngIf="carForm.get('make')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="model">Model:</label>
-          <input
-            type="text"
-            id="model"
-            formControlName="model"
-            placeholder="Enter model"
-          />
-          <div
-            *ngIf="
-              carForm.get('model')?.invalid && carForm.get('model')?.touched
-            "
-            class="error"
-          >
-            Model is required
+          <div class="form-group">
+            <label for="model">Model:</label>
+            <input
+              type="text"
+              id="model"
+              formControlName="model"
+              placeholder="Enter model"
+            />
+            <ng-container *ngIf="carForm.get('model')?.touched">
+              <div
+                *ngIf="
+                  carForm.get('model')?.errors?.['required']
+                "
+                class="error"
+              >
+                Model is required
+              </div>
+              <div
+                *ngIf="carForm.get('model')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="price">Price:</label>
-          <input
-            type="number"
-            id="price"
-            formControlName="price"
-            placeholder="Enter price"
-          />
-          <div
-            *ngIf="
-              carForm.get('price')?.invalid && carForm.get('price')?.touched
-            "
-            class="error"
-          >
-            Price is required and must be a number
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input
+              type="number"
+              id="price"
+              formControlName="price"
+              placeholder="Enter price"
+            />
+            <div
+              *ngIf="
+                carForm.get('price')?.invalid && carForm.get('price')?.touched
+              "
+              class="error"
+            >
+              Price is required and must be a number
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="year">Year:</label>
-          <input
-            type="number"
-            id="year"
-            formControlName="year"
-            placeholder="Enter year"
-          />
-          <div
-            *ngIf="carForm.get('year')?.invalid && carForm.get('year')?.touched"
-            class="error"
-          >
-            Year is required and must be a number
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input
+              type="number"
+              id="year"
+              formControlName="year"
+              placeholder="Enter year"
+            />
+            <div
+              *ngIf="
+                carForm.get('year')?.invalid && carForm.get('year')?.touched
+              "
+              class="error"
+            >
+              Year is required and must be a number
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="engineType">Engine Type:</label>
-          <select id="engineType" formControlName="engineType">
-            <option value="Petrol">Petrol</option>
-            <option value="Diesel">Diesel</option>
-            <option value="Electric">Electric</option>
-            <option value="Hybrid">Hybrid</option>
-          </select>
-          <div
-            *ngIf="
-              carForm.get('engineType')?.invalid &&
-              carForm.get('engineType')?.touched
-            "
-            class="error"
-          >
-            Engine type is required
+          <div class="form-group">
+            <label for="engineType">Engine Type:</label>
+            <select id="engineType" formControlName="engineType">
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+            <div
+              *ngIf="
+                carForm.get('engineType')?.invalid &&
+                carForm.get('engineType')?.touched
+              "
+              class="error"
+            >
+              Engine type is required
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="power">Power:</label>
-          <input
-            type="number"
-            id="power"
-            formControlName="power"
-            placeholder="Enter power"
-          />
-          <div
-            *ngIf="
-              carForm.get('power')?.invalid && carForm.get('power')?.touched
-            "
-            class="error"
-          >
-            Power is required and must be a number
+          <div class="form-group">
+            <label for="power">Power:</label>
+            <input
+              type="number"
+              id="power"
+              formControlName="power"
+              placeholder="Enter power"
+            />
+            <div
+              *ngIf="
+                carForm.get('power')?.invalid && carForm.get('power')?.touched
+              "
+              class="error"
+            >
+              Power is required and must be a number
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="gearbox">Gearbox:</label>
-          <select id="gearbox" formControlName="gearbox">
-            <option value="Manual">Manual</option>
-            <option value="Automatic">Automatic</option>
-          </select>
-          <div
-            *ngIf="
-              carForm.get('gearbox')?.invalid && carForm.get('gearbox')?.touched
-            "
-            class="error"
-          >
-            Gearbox is required
+          <div class="form-group">
+            <label for="gearbox">Gearbox:</label>
+            <select id="gearbox" formControlName="gearbox">
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+            </select>
+            <div
+              *ngIf="
+                carForm.get('gearbox')?.invalid &&
+                carForm.get('gearbox')?.touched
+              "
+              class="error"
+            >
+              Gearbox is required
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="category">Category:</label>
-          <select id="category" formControlName="category">
-            <option value="Sedan">Sedan</option>
-            <option value="Coupe">Coupe</option>
-            <option value="Hatchback">Hatchback</option>
-            <option value="SUV">SUV</option>
-            <option value="Wagon">Wagon</option>
-          </select>
-          <div
-            *ngIf="
-              carForm.get('category')?.invalid &&
-              carForm.get('category')?.touched
-            "
-            class="error"
-          >
-            Category is required
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" formControlName="category">
+              <option value="Sedan">Sedan</option>
+              <option value="Coupe">Coupe</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="SUV">SUV</option>
+              <option value="Wagon">Wagon</option>
+            </select>
+            <div
+              *ngIf="
+                carForm.get('category')?.invalid &&
+                carForm.get('category')?.touched
+              "
+              class="error"
+            >
+              Category is required
+            </div>
           </div>
         </div>
-      </div>
-      <div class="right">
-        <div class="form-group">
-          <label for="mileage">Mileage:</label>
-          <input
-            type="number"
-            id="mileage"
-            formControlName="mileage"
-            placeholder="Enter mileage"
-          />
-          <div
-            *ngIf="
-              carForm.get('mileage')?.invalid && carForm.get('mileage')?.touched
-            "
-            class="error"
-          >
-            Mileage is required and must be a number
+        <div class="right">
+          <div class="form-group">
+            <label for="mileage">Mileage:</label>
+            <input
+              type="number"
+              id="mileage"
+              formControlName="mileage"
+              placeholder="Enter mileage"
+            />
+            <div
+              *ngIf="
+                carForm.get('mileage')?.invalid &&
+                carForm.get('mileage')?.touched
+              "
+              class="error"
+            >
+              Mileage is required and must be a number
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="color">Color:</label>
-          <input
-            type="text"
-            id="color"
-            formControlName="color"
-            placeholder="Enter color"
-          />
-          <div
-            *ngIf="
-              carForm.get('color')?.invalid && carForm.get('color')?.touched
-            "
-            class="error"
-          >
-            Color is required
+          <div class="form-group">
+            <label for="color">Color:</label>
+            <input
+              type="text"
+              id="color"
+              formControlName="color"
+              placeholder="Enter color"
+            />
+            <ng-container *ngIf="carForm.get('color')?.touched">
+              <div
+                *ngIf="
+                carForm.get('color')?.errors?.['required']"
+                class="error"
+              >
+                Color is required
+              </div>
+              <div
+                *ngIf="carForm.get('color')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="color">Location:</label>
-          <input
-            type="text"
-            id="location"
-            formControlName="location"
-            placeholder="Enter location"
-          />
-          <div
-            *ngIf="
-              carForm.get('location')?.invalid && carForm.get('location')?.touched
-            "
-            class="error"
-          >
-            Location is required
+          <div class="form-group">
+            <label for="color">Location:</label>
+            <input
+              type="text"
+              id="location"
+              formControlName="location"
+              placeholder="Enter location"
+            />
+            <ng-container *ngIf="carForm.get('location')?.touched">
+              <div
+                *ngIf="
+                carForm.get('location')?.errors?.['required']"
+                class="error"
+              >
+                Location is required
+              </div>
+              <div
+                *ngIf="carForm.get('location')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <textarea
-            id="description"
-            formControlName="description"
-            placeholder="Enter description"
-          ></textarea>
-          <div
-            *ngIf="
-              carForm.get('description')?.invalid &&
-              carForm.get('description')?.touched
-            "
-            class="error"
-          >
-            Description is required
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              placeholder="Enter description"
+            ></textarea>
+            <ng-container *ngIf="carForm.get('description')?.touched">
+              <div
+                *ngIf="
+                  carForm.get('description')?.invalid &&
+                  carForm.get('description')?.touched
+                "
+                class="error"
+              >
+                Description is required
+              </div>
+              <div
+                *ngIf="carForm.get('description')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="image">Image URL:</label>
-          <input
-            type="text"
-            id="image"
-            formControlName="image"
-            placeholder="Enter image URL"
-          />
-          <div
-            *ngIf="
-              carForm.get('image')?.invalid && carForm.get('image')?.touched
-            "
-            class="error"
-          >
-            Image URL is required
+          <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input
+              type="text"
+              id="image"
+              formControlName="image"
+              placeholder="Enter image URL"
+            />
+            <ng-container *ngIf="carForm.get('image')?.touched">
+            <div
+              *ngIf="
+                carForm.get('image')?.errors?.['required']"
+              class="error"
+            >
+              Image URL is required
+            </div>
+            <div
+                *ngIf="carForm.get('image')?.errors?.['pattern']"
+                class="error"
+              >
+                White spaces are forbidden!
+              </div>
+            </ng-container>
           </div>
-        </div>
 
-        <div class="form-group">
-        <label for="additionalImages">Additional Images:</label>
-        <div formArrayName="additionalImages">
-          <div *ngFor="let imageGroup of additionalImages.controls; let i=index" [formGroupName]="i">
-            <input type="text" formControlName="url" placeholder="Enter additional image URL">
-            <button type="button" (click)="removeAdditionalImage(i)">Remove</button>
+          <div class="form-group">
+            <label for="additionalImages">Additional Images:</label>
+            <div formArrayName="additionalImages">
+              <div
+                *ngFor="
+                  let imageGroup of additionalImages.controls;
+                  let i = index
+                "
+                [formGroupName]="i"
+              >
+                <input
+                  type="text"
+                  formControlName="url"
+                  placeholder="Enter additional image URL"
+                />
+                <button type="button" (click)="removeAdditionalImage(i)">
+                  Remove
+                </button>
+              </div>
+            </div>
+            <button type="button" (click)="addAdditionalImage()">
+              Add Image
+            </button>
           </div>
         </div>
-        <button type="button" (click)="addAdditionalImage()">Add Image</button>
-      </div>
-      </div>
       </div>
       <button type="submit" [disabled]="!carForm.valid">Submit</button>
     </form>
   </div>
 </div>
-

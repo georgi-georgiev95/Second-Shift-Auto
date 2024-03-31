@@ -13,8 +13,8 @@ import { sanitizeInput } from '../sanitize-input';
 })
 export class AddCarComponent {
   carForm = this.fb.group({
-    make: ['', Validators.required],
-    model: ['', Validators.required],
+    make: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
+    model: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
     price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     year: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     engineType: ['', Validators.required],
@@ -22,10 +22,13 @@ export class AddCarComponent {
     gearbox: ['', Validators.required],
     category: ['', Validators.required],
     mileage: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-    color: ['', Validators.required],
-    location: ['', Validators.required],
-    description: ['', Validators.required],
-    image: ['', Validators.required],
+    color: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
+    location: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
+    description: [
+      '',
+      [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)],
+    ],
+    image: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
     additionalImages: this.fb.array([]),
   });
 
@@ -47,7 +50,7 @@ export class AddCarComponent {
     }
     this.additionalImages.push(
       this.fb.group({
-        url: ['', Validators.required],
+        url: ['', [Validators.required, Validators.pattern(/^[^\s].*[^\s]$/)]],
       })
     );
   }
@@ -60,7 +63,7 @@ export class AddCarComponent {
     if (this.carForm.valid) {
       let owner: string = this.authenticationService.user?.userId || '';
       const carObj = this.carForm.value as Car;
-      sanitizeInput(carObj);      
+      sanitizeInput(carObj);
       this.carApiService.createCar(carObj, owner).subscribe((data) => {
         if (data.error) {
           alert(data.error);
@@ -68,7 +71,6 @@ export class AddCarComponent {
         }
         this.router.navigate(['/cars/catalog']);
       });
-    } 
+    }
   }
-
 }
