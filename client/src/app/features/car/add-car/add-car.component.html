@@ -245,8 +245,7 @@
             <ng-container *ngIf="carForm.get('description')?.touched">
               <div
                 *ngIf="
-                  carForm.get('description')?.invalid &&
-                  carForm.get('description')?.touched
+                  carForm.get('description')?.errors?.['required']
                 "
                 class="error"
               >
